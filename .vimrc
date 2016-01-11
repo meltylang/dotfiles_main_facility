@@ -30,6 +30,11 @@ endif
 " slate for root, elflord for user
 colorscheme elflord
 
+" Colorcolumn color
+hi ColorColumn ctermbg=8
+" Setting 80-column highlighting line, default is red, setting blue for terminal
+set colorcolumn=81
+
 " vim-session settings
 let g:session_autosave = 'no'
 let g:session_autoload = 'no'
@@ -48,8 +53,6 @@ if has('syntax') && !exists('g:syntax_on')
   syntax enable
 endif
 
-" Setting 80-column highlighting line, default is red, setting blue for terminal
-set colorcolumn=81
 " The following are commented out as they cause vim to behave a lot
 " differently from regular Vi. They are highly recommended though.
 "set showcmd		" Show (partial) command in status line.
@@ -70,7 +73,6 @@ endif
 " Statusline : current mode, filename, encoding
 set laststatus=2
 
-hi ColorColumn ctermbg=4
 " Dealing with encodings once and for all
 set encoding=utf-8 fileencoding=utf-8 termencoding=utf-8
 " Size of a hard tabstop
