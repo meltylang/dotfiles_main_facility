@@ -43,14 +43,13 @@ let g:airline#extensions#tabline#enabled = 1
 if has('autocmd')
   filetype plugin indent on
 endif
+
 if has('syntax') && !exists('g:syntax_on')
   syntax enable
-  " Setting 80-column highlighting line, default is red, setting blue for terminal
-  set colorcolumn=81
-else
-  set colorcolumn=0
 endif
 
+" Setting 80-column highlighting line, default is red, setting blue for terminal
+set colorcolumn=81
 " The following are commented out as they cause vim to behave a lot
 " differently from regular Vi. They are highly recommended though.
 "set showcmd		" Show (partial) command in status line.
@@ -86,10 +85,9 @@ set smarttab
 " Always uses spaces instead of tab characters
 set expandtab
 set autoindent
+set list          " Display unprintable characters f12 - switches
+set listchars=tab:•\ ,trail:•,extends:»,precedes:« " Unprintable chars mapping
 
 " Keyboard mappings
 map <C-n> :NERDTreeToggle<CR>
-
-set list          " Display unprintable characters f12 - switches
-set listchars=tab:•\ ,trail:•,extends:»,precedes:« " Unprintable chars mapping
 
