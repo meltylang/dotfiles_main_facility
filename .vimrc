@@ -45,6 +45,10 @@ if has('autocmd')
 endif
 if has('syntax') && !exists('g:syntax_on')
   syntax enable
+  " Setting 80-column highlighting line, default is red, setting blue for terminal
+  set colorcolumn=81
+else
+  set colorcolumn=0
 endif
 
 " The following are commented out as they cause vim to behave a lot
@@ -67,8 +71,6 @@ endif
 " Statusline : current mode, filename, encoding
 set laststatus=2
 
-" Setting 80-column highlighting line, default is red, setting blue for terminal
-set colorcolumn=81
 hi ColorColumn ctermbg=4
 " Dealing with encodings once and for all
 set encoding=utf-8 fileencoding=utf-8 termencoding=utf-8
