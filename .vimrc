@@ -3,6 +3,11 @@
 " :so $MYVIMRC — another way; :so ~/.vimrc — on unix; :so ~/_vimrc — on
 " windows.
 
+" Source a global configuration file if available
+if filereadable("/etc/vim/vimrc.local")
+  source /etc/vim/vimrc.local
+endif
+
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -35,15 +40,12 @@ hi ColorColumn ctermbg=8
 " Setting 80-column highlighting line, default is red, setting blue for terminal
 set colorcolumn=81
 
+" Enable vim-airline
+let g:airline#extensions#tabline#enabled = 1
+
 " vim-session settings
 let g:session_autosave = 'no'
 let g:session_autoload = 'no'
-
-" Enable vim-airline
-let g:airline#extensions#tabline#enabled = 1
-" theme for visual user separation
-" kalisi for root, auto/default-dark for user
-"let g:airline_theme = 'dark'
 
 if has('autocmd')
   filetype plugin indent on
@@ -57,22 +59,9 @@ endif
 " differently from regular Vi. They are highly recommended though.
 "set showcmd		" Show (partial) command in status line.
 set showmatch		" Show matching brackets.
-"set ignorecase		" Do case insensitive matching
-"set smartcase		" Do smart case matching
-"set incsearch		" Incremental search
-"set autowrite		" Automatically save before commands like :next and :make
-"set hidden		" Hide buffers when they are abandoned
-"set mouse=a		" Enable mouse usage (all modes)
 set number
-
-" Source a global configuration file if available
-if filereadable("/etc/vim/vimrc.local")
-  source /etc/vim/vimrc.local
-endif
-
 " Statusline : current mode, filename, encoding
 set laststatus=2
-
 " Dealing with encodings once and for all
 set encoding=utf-8 fileencoding=utf-8 termencoding=utf-8
 " Size of a hard tabstop
