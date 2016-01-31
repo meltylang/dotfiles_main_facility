@@ -23,6 +23,7 @@ call vundle#begin()
   Plugin 'xolox/vim-misc'
   Plugin 'xolox/vim-session'
   Plugin 'bling/vim-airline'
+  Plugin 'rhysd/vim-crystal'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
