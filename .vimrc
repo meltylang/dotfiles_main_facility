@@ -36,11 +36,6 @@ endif
 " slate for root, elflord for user
 colorscheme elflord
 
-" Colorcolumn color
-hi ColorColumn ctermbg=8
-" Setting 80-column highlighting line, default is red, setting blue for terminal
-set colorcolumn=81
-
 " Enable vim-airline
 let g:airline#extensions#tabline#enabled = 1
 
@@ -55,6 +50,13 @@ endif
 if has('syntax') && !exists('g:syntax_on')
   syntax enable
 endif
+
+" Setting color column after syntax, because of syntax at startup overrides
+" color setting.
+" Colorcolumn color
+hi ColorColumn ctermbg=8
+" Setting 80-column highlighting line, default is red, setting blue for terminal
+set colorcolumn=81
 
 " The following are commented out as they cause vim to behave a lot
 " differently from regular Vi. They are highly recommended though.
@@ -74,10 +76,9 @@ set shiftwidth=2
 set softtabstop=2
 " Make "tab" insert indents instead of tabs at the beginning of a line
 set smarttab
-" Always uses spaces instead of tab characters
-set expandtab
-set autoindent
-set list          " Display unprintable characters f12 - switches
+set expandtab  " Always uses spaces instead of tab characters
+set autoindent " Copy indent from current line when starting a new line
+set list       " Display unprintable characters f12 - switches
 set listchars=tab:•\ ,trail:•,extends:»,precedes:« " Unprintable chars mapping
 
 " Keyboard mappings
