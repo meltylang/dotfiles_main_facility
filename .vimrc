@@ -24,6 +24,7 @@ call vundle#begin()
   Plugin 'xolox/vim-session'
   Plugin 'bling/vim-airline'
   Plugin 'rhysd/vim-crystal'
+  Plugin 'Yggdroot/indentLine'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -78,13 +79,14 @@ set softtabstop=2
 set smarttab
 set expandtab  " Always uses spaces instead of tab characters
 set autoindent " Copy indent from current line when starting a new line
-set list       " Display unprintable characters f12 - switches
 " Unprintable chars mapping
 if !($TERM == 'linux')
   set listchars=eol:↵,tab:•\ ,trail:•,extends:»,precedes:«
 else
   set listchars=eol:$,tab:•\ ,trail:•,extends:»,precedes:«
 endif
+set list       " Display unprintable characters f12 - switches
+
 " Keyboard mappings
 map <C-n> :NERDTreeToggle<CR>
 
