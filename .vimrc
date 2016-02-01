@@ -50,13 +50,15 @@ endif
 
 if has('syntax') && !exists('g:syntax_on')
   syntax enable
+  let g:indentLine_enabled = 1
+else
+  let g:indentLine_enabled = 0
 endif
 
 " Setting color column after syntax, because of syntax at startup overrides
-" color setting.
-" Colorcolumn color
+" color setting. Dark gray colorcolumn.
 hi ColorColumn ctermbg=8
-" Setting 80-column highlighting line, default is red, setting blue for terminal
+" Setting 81-column highlighting line.
 set colorcolumn=81
 
 " The following are commented out as they cause vim to behave a lot
