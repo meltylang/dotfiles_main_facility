@@ -34,6 +34,7 @@ filetype plugin indent on    " required
 if !($TERM == 'linux')
   set t_Co=256
 endif
+
 " slate for root, elflord for user
 colorscheme elflord
 
