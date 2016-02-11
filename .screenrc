@@ -9,4 +9,4 @@ layout save default
 # the following two lines give a two-line status, with the current window 
 # highlighted
 hardstatus alwayslastline
-hardstatus string "%{= kG}[%= %{= kw}%-w%{+b yw} %n*%t%?(%u)%? %{-}%+w %=%{g}][%{B}%d/%m/%y%{Y}-%{B}%c:%s%{G}]"
+hardstatus string "%{= kG}[%{y}GNU/Screen%{G}][%= %{= kw}%-w%{+b yw} %n*%t%?(%u)%? %{-}%+w %=%{g}][%{B}%d/%m/%y%{Y}-%{B}%c:%s%{G}]"
