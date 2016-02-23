@@ -2,7 +2,8 @@
 # enabling color support in screen:
 attrcolor b ".I"
 termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E38;5;%dm'
-defbce "on"
+defbce on
+
 # Save splits automatically and restore them with next reattaching
 layout save default
 
