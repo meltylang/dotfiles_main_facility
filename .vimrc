@@ -22,7 +22,8 @@ call vundle#begin()
   Plugin 'scrooloose/nerdtree'
   Plugin 'xolox/vim-misc'
   Plugin 'xolox/vim-session'
-  Plugin 'bling/vim-airline'
+  Plugin 'vim-airline/vim-airline'
+  Plugin 'vim-airline/vim-airline-themes'
   Plugin 'rhysd/vim-crystal'
   Plugin 'Yggdroot/indentLine'
 
@@ -40,6 +41,9 @@ colorscheme elflord
 
 " Enable vim-airline
 let g:airline#extensions#tabline#enabled = 1
+" theme for visual user separation
+" kalisi for root, auto/default-dark for user
+let g:airline_theme = 'kalisi'
 
 " vim-session settings
 let g:session_autosave = 'no'
