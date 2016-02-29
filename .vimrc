@@ -84,7 +84,7 @@ set expandtab  " Always uses spaces instead of tab characters
 set autoindent " Copy indent from current line when starting a new line
 " Next two options make searces simplier and visual.
 set ignorecase
-set hlsearch
+" set hlsearch
 
 " Unprintable chars mapping
 if !($TERM == 'linux')
