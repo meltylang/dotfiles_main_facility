@@ -43,7 +43,7 @@ colorscheme elflord
 let g:airline#extensions#tabline#enabled = 1
 " theme for visual user separation
 " kalisi for root, auto/default-dark for user
-let g:airline_theme = 'kalisi'
+let g:airline_theme = 'dark'
 
 " vim-session settings
 let g:session_autosave = 'no'
