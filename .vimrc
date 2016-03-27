@@ -89,6 +89,8 @@ set autoindent " Copy indent from current line when starting a new line
 " Next two options make searces simplier and visual.
 set ignorecase
 " set hlsearch
+" Show as much as possible of a wrapped last line, not just "@".
+set display=lastline
 
 " Unprintable chars mapping
 if !($TERM == 'linux')
