@@ -91,6 +91,17 @@ set ignorecase
 " set hlsearch
 " Show as much as possible of a wrapped last line, not just "@".
 set display=lastline
+" And keyboard remappings for vertical navigation
+nnoremap j gj
+nnoremap k gk
+vnoremap j gj
+vnoremap k gk
+nnoremap <Down> gj
+nnoremap <Up> gk
+vnoremap <Down> gj
+vnoremap <Up> gk
+inoremap <Down> <C-o>gj
+inoremap <Up> <C-o>gk
 
 " Unprintable chars mapping
 if !($TERM == 'linux')
