@@ -11,3 +11,6 @@ layout save default
 # highlighted
 hardstatus alwayslastline
 hardstatus string "%{= kG}[%{y}GNU/Screen%{G}][%= %{= kw}%-w%{+b yw} %n*%t%?(%u)%? %{-}%+w %=%{g}][%{B}%d/%m/%y%{Y}-%{B}%c:%s%{G}]"
+
+# RVM tweak
+shell -${SHELL}
