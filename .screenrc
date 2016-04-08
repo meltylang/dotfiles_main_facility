@@ -4,6 +4,10 @@ attrcolor b ".I"
 termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E38;5;%dm'
 defbce on
 
+# Scrollback buffer limit
+# Man-page: C-a esc (copy) Enter copy/scrollback mode.
+defscrollback 20000
+
 # Save splits automatically and restore them with next reattaching
 layout save default
 
