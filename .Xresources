@@ -1,0 +1,113 @@
+! <- comment sign
+! Update settings:
+! xrdb -merge ~/.Xresources
+
+! Enabling normal copy/paste to CLIPBOARD buffer in X11,
+! instead of default PRIMARY in xterm and pure x-apps.
+! Ctrl-Shift+C/V copy/paste
+xterm*VT100.Translations: #override \
+  Ctrl Shift <Key>V:    insert-selection(CLIPBOARD) \n\
+  Ctrl Shift <Key>C:    copy-selection(CLIPBOARD)
+
+xterm*loginShell:       true
+xterm*renderFont:       true
+xterm*faceName:         DejaVu Sans Mono
+xterm*faceSize:         12
+xterm*termName:         xterm-256color
+xterm*charClass:        33:48,35:48,37:48,43:48,45-47:48,64:48,95:48,126:48
+xterm*vt100*geometry:   100x52
+xterm*saveLines:        16384
+xterm*cursorBlink:      true
+! enable mouse-wheel scrolling (like pg-up/pg-down)
+! in programms man or screen
+xterm*alternateScroll:  true
+! Copy and paste
+!xterm*selectToClipboard: true
+xterm*visualbell:       true
+xterm*bellIsUrgent:     true
+xterm*utf8:             2
+! Use UTF-8 characters
+xterm*locale:           true
+xterm*utf8Title:        true
+
+! Color definition list:
+!BLK Cursor
+#define _color0        #000000
+#define _color8        #B2B2B2
+!RED Tag
+#define _color1        #B21818
+#define _color9        #FF5454
+!GRN SpecialKey
+#define _color2        #18B218
+#define _color10       #54FF54
+!YEL Keyword
+#define _color3        #B26818
+#define _color11       #FFFF54
+!BLU Number
+#define _color4        #1818B2
+#define _color12       #5454FF
+!MAG Precondit
+#define _color5        #c0bed1
+#define _color13       #c0bed1
+!CYN Float
+#define _color6        #18B2B2
+#define _color14       #54FFFF
+!WHT Search
+#define _color7        #B2B2B2
+#define _color15       #FFFFFF
+!FMT Include, StatusLine, ErrorMsg
+#define _colorBD       #ffcfaf
+#define _colorUL       #ccdc90
+#define _colorIT       #80d4aa
+!TXT Normal, Normal, Cursor
+#define _foreground    #B2B2B2
+#define _background    #000000
+#define _cursorColor   #B2B2B2
+
+! Assigning of colors:
+! URxvt section
+URxvt*color0         : _color0
+URxvt*color1         : _color1
+URxvt*color2         : _color2
+URxvt*color3         : _color3
+URxvt*color4         : _color4
+URxvt*color5         : _color5
+URxvt*color6         : _color6
+URxvt*color7         : _color7
+URxvt*color8         : _color8
+URxvt*color9         : _color9
+URxvt*color10        : _color10
+URxvt*color11        : _color11
+URxvt*color12        : _color12
+URxvt*color13        : _color13
+URxvt*color14        : _color14
+URxvt*color15        : _color15
+URxvt*colorBD        : _colorBD
+URxvt*colorIT        : _colorIT
+URxvt*colorUL        : _colorUL
+URxvt*foreground     : _foreground
+URxvt*background     : _background
+URxvt*cursorColor    : _cursorColor
+! XTerm section
+xterm*color0         : _color0
+xterm*color1         : _color1
+xterm*color2         : _color2
+xterm*color3         : _color3
+xterm*color4         : _color4
+xterm*color5         : _color5
+xterm*color6         : _color6
+xterm*color7         : _color7
+xterm*color8         : _color8
+xterm*color9         : _color9
+xterm*color10        : _color10
+xterm*color11        : _color11
+xterm*color12        : _color12
+xterm*color13        : _color13
+xterm*color14        : _color14
+xterm*color15        : _color15
+xterm*colorBD        : _colorBD
+xterm*colorIT        : _colorIT
+xterm*colorUL        : _colorUL
+xterm*foreground     : _foreground
+xterm*background     : _background
+xterm*cursorColor    : _cursorColor
