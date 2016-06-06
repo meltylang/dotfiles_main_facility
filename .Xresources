@@ -7,7 +7,9 @@
 ! Ctrl-Shift+C/V copy/paste
 xterm*VT100.Translations: #override \
   Ctrl Shift <Key>V:    insert-selection(CLIPBOARD) \n\
-  Ctrl Shift <Key>C:    copy-selection(CLIPBOARD)
+Ctrl Shift <Key>C:    copy-selection(CLIPBOARD)
+! Fix Alt-key behaviour
+xterm*metaSendsEscape: true
 
 xterm*loginShell:       true
 xterm*renderFont:       true
