@@ -34,10 +34,13 @@ filetype plugin indent on    " required
 " Setting color mode because of Konsole, missbehaving(?) without tha option
 if !($TERM == 'linux')
   set t_Co=256
+  " slate for root, elflord for user
+  if $USER == 'root'
+    colorscheme slate
+  else
+    colorscheme elflord
+  endif
 endif
-
-" slate for root, elflord for user
-colorscheme elflord
 
 " Enable vim-airline
 let g:airline#extensions#tabline#enabled = 1
