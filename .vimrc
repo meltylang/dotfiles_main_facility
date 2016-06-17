@@ -26,6 +26,7 @@ call vundle#begin()
   Plugin 'vim-airline/vim-airline-themes'
   Plugin 'rhysd/vim-crystal'
   Plugin 'Yggdroot/indentLine'
+  Plugin 'rking/ag.vim'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -53,8 +54,10 @@ let g:session_autosave = 'no'
 let g:session_autoload = 'no'
 
 if has('autocmd')
+  set number
   filetype plugin indent on
 endif
+
 
 if has('syntax') && !exists('g:syntax_on')
   syntax enable
@@ -67,13 +70,12 @@ endif
 " color setting. Dark gray colorcolumn.
 hi ColorColumn ctermbg=8
 " Setting 81-column highlighting line.
-set colorcolumn=81
+"set colorcolumn=81
 
 " The following are commented out as they cause vim to behave a lot
 " differently from regular Vi. They are highly recommended though.
 "set showcmd		" Show (partial) command in status line.
 set showmatch		" Show matching brackets.
-set number
 " Statusline : current mode, filename, encoding
 set laststatus=2
 " Dealing with encodings once and for all
