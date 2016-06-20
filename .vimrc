@@ -54,10 +54,8 @@ let g:session_autosave = 'no'
 let g:session_autoload = 'no'
 
 if has('autocmd')
-  set number
   filetype plugin indent on
 endif
-
 
 if has('syntax') && !exists('g:syntax_on')
   syntax enable
@@ -66,12 +64,14 @@ else
   let g:indentLine_enabled = 0
 endif
 
+" 80 columns limit guide
 " Setting color column after syntax, because of syntax at startup overrides
 " color setting. Dark gray colorcolumn.
 hi ColorColumn ctermbg=8
 " Setting 81-column highlighting line.
 "set colorcolumn=81
-
+" Line numbers
+" set number
 " The following are commented out as they cause vim to behave a lot
 " differently from regular Vi. They are highly recommended though.
 "set showcmd		" Show (partial) command in status line.
