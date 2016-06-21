@@ -70,6 +70,11 @@ endif
 hi ColorColumn ctermbg=8
 " Setting 81-column highlighting line.
 "set colorcolumn=81
+" Another method: highlighted only symbols in lines, if there is no limit
+" exceed no column will shown.
+"highlight ColorColumn ctermbg=darkgray
+"call matchadd('ColorColumn', '\%81v', 100)
+
 " Line numbers
 " set number
 " The following are commented out as they cause vim to behave a lot
