@@ -22,11 +22,11 @@ call vundle#begin()
   Plugin 'scrooloose/nerdtree'
   Plugin 'xolox/vim-misc'
   Plugin 'xolox/vim-session'
-  Plugin 'vim-airline/vim-airline'
+  Plugin 'vim-airline/vim-airline'        " airline plugin
   Plugin 'vim-airline/vim-airline-themes'
   Plugin 'rhysd/vim-crystal'
-  Plugin 'Yggdroot/indentLine'
-  Plugin 'rking/ag.vim'
+  Plugin 'Yggdroot/indentLine'            " indentatin guides
+  Plugin 'rking/ag.vim'                   " Ag (silver search) integration
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -35,7 +35,9 @@ filetype plugin indent on    " required
 " Setting color mode because of Konsole, missbehaving(?) without tha option
 if !($TERM == 'linux')
   set t_Co=256
-  set mouse=a
+  if !(has('clipboard') == 0)
+    set mouse=a
+  endif
   " slate for root, elflord for user
   if $USER == 'root'
     colorscheme slate
@@ -77,7 +79,7 @@ hi ColorColumn ctermbg=8
 "call matchadd('ColorColumn', '\%81v', 100)
 
 " Line numbers
-" set number
+"set number
 " The following are commented out as they cause vim to behave a lot
 " differently from regular Vi. They are highly recommended though.
 "set showcmd		" Show (partial) command in status line.
@@ -102,25 +104,32 @@ set ignorecase
 " set hlsearch
 " Show as much as possible of a wrapped last line, not just "@".
 set display=lastline
-" And keyboard remappings for vertical navigation
-nnoremap j gj
-nnoremap k gk
-vnoremap j gj
-vnoremap k gk
-nnoremap <Down> gj
-nnoremap <Up> gk
-vnoremap <Down> gj
-vnoremap <Up> gk
-inoremap <Down> <C-o>gj
-inoremap <Up> <C-o>gk
-
+" Allow to switch between buffers without sawing them
+set hidden
+" Close confirmation for unsaved buffers
+set confirm
 " Unprintable chars mapping
 if !($TERM == 'linux')
   set listchars=eol:↵,tab:•\ ,trail:•,extends:»,precedes:«
 else
   set listchars=eol:$,tab:•\ ,trail:•,extends:»,precedes:«
 endif
-set list       " Display unprintable characters f12 - switches
+" Display unprintable characters f12 - switches
+set list
+
+" And keyboard remappings for vertical navigation
+nnoremap j gj
+nnoremap k gk
+nnoremap <Down> gj
+nnoremap <Up> gk
+vnoremap k gk
+vnoremap <Down> gj
+vnoremap <Up> gk
+inoremap <Down> <C-o>gj
+inoremap <Up> <C-o>gk
+" Buffers navigation. <Leader> by default mapped to "\" character.
+nmap <Leader>[ :bp<CR>
+nmap <Leader>] :bn<CR>
 
 " Keyboard mappings
 map <C-n> :NERDTreeToggle<CR>
