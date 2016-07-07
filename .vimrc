@@ -27,6 +27,7 @@ call vundle#begin()
   Plugin 'rhysd/vim-crystal'
   Plugin 'Yggdroot/indentLine'            " indentatin guides
   Plugin 'rking/ag.vim'                   " Ag (silver search) integration
+  Plugin 'jlanzarotta/bufexplorer'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
