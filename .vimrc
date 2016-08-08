@@ -79,6 +79,14 @@ hi ColorColumn ctermbg=8
 "highlight ColorColumn ctermbg=darkgray
 "call matchadd('ColorColumn', '\%81v', 100)
 
+" Swap files options:
+" Turn swap files off:
+set noswapfile
+" or create them in dedicated directory:
+"set backupdir=~/.vim/backup//
+"set directory=~/.vim/swap//
+"set undodir=~/.vim/undo//
+
 " Line numbers
 "set number
 " The following are commented out as they cause vim to behave a lot
@@ -118,6 +126,26 @@ endif
 " Display unprintable characters f12 - switches
 set list
 
+function! ToggleSyntax()
+  if exists("g:syntax_on")
+    syntax off
+  else
+    syntax enable
+  endif
+  redraw
+endfunction
+
+" Removes trailing spaces
+function! TrimWhiteSpace()
+  %s/\s\+$//e
+endfunction
+
+function! FoldLongLines()
+  " Implement detection of was text area specified or not
+  %!fold --spaces --width=80
+endfunction
+
+" Keyboard mappings
 " And keyboard remappings for vertical navigation
 nnoremap j gj
 nnoremap k gk
@@ -129,9 +157,11 @@ vnoremap <Up> gk
 inoremap <Down> <C-o>gj
 inoremap <Up> <C-o>gk
 " Buffers navigation. <Leader> by default mapped to "\" character.
-nmap <Leader>[ :bp<CR>
-nmap <Leader>] :bn<CR>
-
-" Keyboard mappings
-map <C-n> :NERDTreeToggle<CR>
+nmap      <Leader>[ :bp<CR>
+nmap      <Leader>] :bn<CR>
+" Plugins key mappings
+map       <C-n> :NERDTreeToggle<CR>
+" Function key mappings
+nmap      <silent>  ;s  :call ToggleSyntax()<CR>
+nnoremap  <silent> <Leader>rts :call TrimWhiteSpace()<CR>
 

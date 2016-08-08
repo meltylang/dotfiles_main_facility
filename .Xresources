@@ -68,6 +68,7 @@ xterm*utf8Title:        true
 
 ! Assigning of colors:
 ! URxvt section
+urxvt.secondaryScroll: false
 URxvt*color0         : _color0
 URxvt*color1         : _color1
 URxvt*color2         : _color2
