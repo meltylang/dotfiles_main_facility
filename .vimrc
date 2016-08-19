@@ -116,7 +116,7 @@ set display=lastline
 " Allow to switch between buffers without sawing them
 set hidden
 " Close confirmation for unsaved buffers
-set confirm
+"set confirm
 " Unprintable chars mapping
 if !($TERM == 'linux')
   set listchars=eol:↵,tab:•\ ,trail:•,extends:»,precedes:«

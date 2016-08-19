@@ -5,32 +5,76 @@
 ! Enabling normal copy/paste to CLIPBOARD buffer in X11,
 ! instead of default PRIMARY in xterm and pure x-apps.
 ! Ctrl-Shift+C/V copy/paste
-xterm*VT100.Translations: #override \
-  Ctrl Shift <Key>V:    insert-selection(CLIPBOARD) \n\
-  Ctrl Shift <Key>C:    copy-selection(CLIPBOARD)
-! Fix Alt-key behaviour
-xterm*metaSendsEscape: true
 
-xterm*loginShell:       true
-xterm*renderFont:       true
-xterm*faceName:         DejaVu Sans Mono
-xterm*faceSize:         12
-xterm*termName:         xterm-256color
-xterm*charClass:        33:48,35:48,37:48,43:48,45-47:48,64:48,95:48,126:48
-xterm*vt100*geometry:   120x40
-xterm*saveLines:        16384
-xterm*cursorBlink:      true
+#define _term_size          140x37
+*.cursorBlink:               true
+!! Turn on dynamic colors. Needed for proper solarized support.
+!*.dynamicColors:             true
+!*.visualBell:          true
+*visualBellLine:      true
+!*.bellIsUrgent:         true
+!*.charClass:            33:48,35:48,37:48,43:48,45-47:48,64:48,95:48,126:48
+
+! XTERM
+xterm*VT100.Translations: #override \
+  Ctrl Shift <Key>V:        insert-selection(CLIPBOARD) \n\
+  Ctrl Shift <Key>C:        copy-selection(CLIPBOARD)
+! Fix Alt-key behaviour
+xterm*metaSendsEscape:      true
+xterm*loginShell:           true
+xterm*renderFont:           true
+!xterm*faceName:            DejaVu Sans Mono
+xterm*faceName:             PragmataPro
+xterm*faceSize:             14
+xterm*termName:             xterm-256color
+xterm*charClass:            33:48,35:48,37:48,43:48,45-47:48,64:48,95:48,126:48
+xterm*vt100*geometry:       _term_size
+xterm*saveLines:            16384
+!xterm*cursorBlink:          true
 ! enable mouse-wheel scrolling (like pg-up/pg-down)
 ! in programms man or screen
-xterm*alternateScroll:  true
+xterm*alternateScroll:      true
 ! Copy and paste
-!xterm*selectToClipboard: true
-xterm*visualbell:       true
-xterm*bellIsUrgent:     true
-xterm*utf8:             2
+!xterm*selectToClipboard:   true
 ! Use UTF-8 characters
-xterm*locale:           true
-xterm*utf8Title:        true
+xterm*locale:               true
+xterm*utf8Title:            true
+!*visualBell:               on
+xterm*utf8:                always
+xterm*utf8Fonts:           always
+xterm*visualBell:          true
+xterm*visualBellLine:      true
+!xterm*bellIsUrgent:         true
+
+! URXVT
+urxvt.keysym.Home:          \033[1~
+urxvt.keysym.End:           \033[4~
+urxvt.keysym.KP_Home:       \033[1~
+urxvt.keysym.KP_End:        \033[4~
+urxvt.termName:             xterm-256color
+!urxvt.termName:             rxvt-unicode
+!urxvt.termName:             rxvt-unicode-256
+urxvt.depth:                32
+urxvt.geometry:             _term_size
+urxvt.transparent:          false
+urxvt.fading:               0
+!urxvt.urgentOnBell:         true
+!urxvt.visualBell:           true
+urxvt.visualBellLine:       true
+urxvt.saveLines:            9000
+urxvt.internalBorder:       0
+urxvt.externalBorder:       0
+urxvt.lineSpace:            0
+urxvt.loginShell:           true
+! Fonts
+urxvt.allow_bold:           true
+urxvt.font:                 xft:Pragmata Pro:size=14:antialias=true:autohint=true
+urxvt.boldFont:             xft:Pragmata Pro:size=13:antialias=true:autohint=true
+! Fix font space
+urxvt*letterSpace:          -1
+! Scrollbar
+urxvt.scrollStyle:          rxvt
+urxvt.scrollBar:            false
 
 ! Color definition list:
 !BLK Cursor
@@ -68,29 +112,29 @@ xterm*utf8Title:        true
 
 ! Assigning of colors:
 ! URxvt section
-urxvt.secondaryScroll: false
-URxvt*color0         : _color0
-URxvt*color1         : _color1
-URxvt*color2         : _color2
-URxvt*color3         : _color3
-URxvt*color4         : _color4
-URxvt*color5         : _color5
-URxvt*color6         : _color6
-URxvt*color7         : _color7
-URxvt*color8         : _color8
-URxvt*color9         : _color9
-URxvt*color10        : _color10
-URxvt*color11        : _color11
-URxvt*color12        : _color12
-URxvt*color13        : _color13
-URxvt*color14        : _color14
-URxvt*color15        : _color15
-URxvt*colorBD        : _colorBD
-URxvt*colorIT        : _colorIT
-URxvt*colorUL        : _colorUL
-URxvt*foreground     : _foreground
-URxvt*background     : _background
-URxvt*cursorColor    : _cursorColor
+urxvt*color0         : _color0
+urxvt*color1         : _color1
+urxvt*color2         : _color2
+urxvt*color3         : _color3
+urxvt*color4         : _color4
+urxvt*color5         : _color5
+urxvt*color6         : _color6
+urxvt*color7         : _color7
+urxvt*color8         : _color8
+urxvt*color9         : _color9
+urxvt*color10        : _color10
+urxvt*color11        : _color11
+urxvt*color12        : _color12
+urxvt*color13        : _color13
+urxvt*color14        : _color14
+urxvt*color15        : _color15
+urxvt*colorBD        : _colorBD
+urxvt*colorIT        : _colorIT
+urxvt*colorUL        : _colorUL
+urxvt*foreground     : _foreground
+urxvt*background     : _background
+urxvt*cursorColor    : _cursorColor
+
 ! XTerm section
 xterm*color0         : _color0
 xterm*color1         : _color1
