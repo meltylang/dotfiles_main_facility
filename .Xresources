@@ -2,20 +2,15 @@
 ! Update settings:
 ! xrdb -merge ~/.Xresources
 
+#define _term_size          140x37
+
+*.cursorBlink:              true
+*visualBellLine:            true
+
+! XTERM
 ! Enabling normal copy/paste to CLIPBOARD buffer in X11,
 ! instead of default PRIMARY in xterm and pure x-apps.
 ! Ctrl-Shift+C/V copy/paste
-
-#define _term_size          140x37
-*.cursorBlink:               true
-!! Turn on dynamic colors. Needed for proper solarized support.
-!*.dynamicColors:             true
-!*.visualBell:          true
-*visualBellLine:      true
-!*.bellIsUrgent:         true
-!*.charClass:            33:48,35:48,37:48,43:48,45-47:48,64:48,95:48,126:48
-
-! XTERM
 xterm*VT100.Translations: #override \
   Ctrl Shift <Key>V:        insert-selection(CLIPBOARD) \n\
   Ctrl Shift <Key>C:        copy-selection(CLIPBOARD)
@@ -40,10 +35,10 @@ xterm*alternateScroll:      true
 xterm*locale:               true
 xterm*utf8Title:            true
 !*visualBell:               on
-xterm*utf8:                always
-xterm*utf8Fonts:           always
-xterm*visualBell:          true
-xterm*visualBellLine:      true
+xterm*utf8:                 always
+xterm*utf8Fonts:            always
+xterm*visualBell:           true
+xterm*visualBellLine:       true
 !xterm*bellIsUrgent:         true
 
 ! URXVT
@@ -68,8 +63,12 @@ urxvt.lineSpace:            0
 urxvt.loginShell:           true
 ! Fonts
 urxvt.allow_bold:           true
-urxvt.font:                 xft:Pragmata Pro:size=14:antialias=true:autohint=true
-urxvt.boldFont:             xft:Pragmata Pro:size=13:antialias=true:autohint=true
+!urxvt.font:                 xft:Pragmata Pro:size=14:antialias=true:autohint=true
+!urxvt.boldFont:             xft:Pragmata Pro:size=13:antialias=true:autohint=true
+URxvt.font:                 xft:PragmataPro:size=14
+URxvt.boldFont:             xft:PragmataPro:size=14:bold
+URxvt.italicFont:           xft:PragmataPro:size=14:italic
+URxvt.boldItalicFont:       xft:PragmataPro:size=14:bold:italic
 ! Fix font space
 urxvt*letterSpace:          -1
 ! Scrollbar
