@@ -19,7 +19,7 @@ xterm*metaSendsEscape:      true
 xterm*loginShell:           true
 xterm*renderFont:           true
 !xterm*faceName:            DejaVu Sans Mono
-xterm*faceName:             PragmataPro
+xterm*faceName:             xft:PragmataPro
 xterm*faceSize:             14
 xterm*termName:             xterm-256color
 xterm*charClass:            33:48,35:48,37:48,43:48,45-47:48,64:48,95:48,126:48
@@ -62,13 +62,9 @@ urxvt.externalBorder:       0
 urxvt.lineSpace:            0
 urxvt.loginShell:           true
 ! Fonts
-urxvt.allow_bold:           true
-!urxvt.font:                 xft:Pragmata Pro:size=14:antialias=true:autohint=true
-!urxvt.boldFont:             xft:Pragmata Pro:size=13:antialias=true:autohint=true
-URxvt.font:                 xft:PragmataPro:size=14
-URxvt.boldFont:             xft:PragmataPro:size=14:bold
-URxvt.italicFont:           xft:PragmataPro:size=14:italic
-URxvt.boldItalicFont:       xft:PragmataPro:size=14:bold:italic
+URxvt.allow_bold:           true
+URxvt.font:                 xft:Pragmata Pro:size=13:antialias=true:autohint=false
+URxvt.boldFont:             xft:Pragmata Pro:style=bold:size=13:antialias=true:autohint=false
 ! Fix font space
 urxvt*letterSpace:          -1
 ! Scrollbar
