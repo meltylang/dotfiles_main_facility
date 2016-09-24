@@ -68,6 +68,12 @@ else
   let g:indentLine_enabled = 0
 endif
 
+"Disable system bell (beep)
+set noerrorbells visualbell t_vb=
+if has('autocmd')
+  autocmd GUIEnter * set visualbell t_vb=
+endif
+
 " 80 columns limit guide
 " Setting color column after syntax, because of syntax at startup overrides
 " color setting. Dark gray colorcolumn.
@@ -91,21 +97,18 @@ set noswapfile
 "set number
 " The following are commented out as they cause vim to behave a lot
 " differently from regular Vi. They are highly recommended though.
-"set showcmd		" Show (partial) command in status line.
-set showmatch		" Show matching brackets.
-" Statusline : current mode, filename, encoding
-set laststatus=2
+"set showcmd       " Show (partial) command in status line.
+set showmatch      " Show matching brackets.
+set laststatus=2   " Statusline : current mode, filename, encoding
 " Dealing with encodings once and for all
 set encoding=utf-8 fileencoding=utf-8 termencoding=utf-8
-" Size of a hard tabstop
-set tabstop=2
-" Size of an "indent"
-set shiftwidth=2
+set tabstop=2      " Size of a hard tabstop
+set shiftwidth=2   " Size of an indent
 " A combination of spaces and tabs are used to simulate tab stops at a width
 " other than the (hard)tabstop
 set softtabstop=2
-" Make "tab" insert indents instead of tabs at the beginning of a line
-set smarttab
+set smarttab       " Make -tab- insert indents instead of tabs at the beginning
+                   " of a line
 set expandtab  " Always uses spaces instead of tab characters
 set autoindent " Copy indent from current line when starting a new line
 " Next two options make searces simplier and visual.
@@ -126,6 +129,9 @@ endif
 " Display unprintable characters f12 - switches
 set list
 
+" Syntax for thor files (like ruby)
+au BufRead,BufNewFile *.thor set filetype=ruby
+
 function! ToggleSyntax()
   if exists("g:syntax_on")
     syntax off
@@ -142,7 +148,7 @@ endfunction
 
 function! FoldLongLines()
   " Implement detection of was text area specified or not
-  %!fold --spaces --width=80
+  %!fold -s -w 80 " Be careful with non-latin character sets
 endfunction
 
 " Keyboard mappings
