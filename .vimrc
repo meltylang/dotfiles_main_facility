@@ -148,7 +148,8 @@ endfunction
 
 function! FoldLongLines()
   " Implement detection of was text area specified or not
-  %!fold -s -w 80 " Be careful with non-latin character sets
+  " Be careful with non-latin character sets
+  %!fold -s -w 80
 endfunction
 
 " Keyboard mappings

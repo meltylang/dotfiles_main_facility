@@ -5,7 +5,7 @@
 #define _term_size          140x37
 
 *.cursorBlink:              true
-*visualBellLine:            true
+!*visualBellLine:            true
 
 ! xscreensaver ---------------------------------------------------------------
 
@@ -69,11 +69,10 @@ xterm*alternateScroll:      true
 ! Use UTF-8 characters
 xterm*locale:               true
 xterm*utf8Title:            true
-!*visualBell:               on
 xterm*utf8:                 always
 xterm*utf8Fonts:            always
-xterm*visualBell:           true
-xterm*visualBellLine:       true
+!xterm*visualBell:           true
+!xterm*visualBellLine:       true
 !xterm*bellIsUrgent:         true
 
 ! URXVT
@@ -90,7 +89,7 @@ urxvt.transparent:          false
 urxvt.fading:               0
 !urxvt.urgentOnBell:         true
 !urxvt.visualBell:           true
-urxvt.visualBellLine:       true
+!urxvt.visualBellLine:       true
 urxvt.saveLines:            9000
 urxvt.internalBorder:       0
 urxvt.externalBorder:       0
@@ -137,7 +136,7 @@ urxvt.scrollBar:            false
 #define _colorIT       #80d4aa
 !TXT Normal, Normal, Cursor
 #define _foreground    #B2B2B2
-#define _background    #000000
+#define _background    #1E253C
 #define _cursorColor   #B2B2B2
 
 ! Assigning of colors:
