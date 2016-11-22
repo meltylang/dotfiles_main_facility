@@ -49,8 +49,6 @@ endif
 
 " Enable vim-airline
 let g:airline#extensions#tabline#enabled = 1
-" theme for visual user separation
-" kalisi for root, auto/default-dark for user
 let g:airline_theme = 'dark'
 
 " vim-session settings
@@ -76,7 +74,7 @@ endif
 
 " 80 columns limit guide
 " Setting color column after syntax, because of syntax at startup overrides
-" color setting. Dark gray colorcolumn.
+" color setting. Dark gray (8) colorcolumn.
 hi ColorColumn ctermbg=8
 " Setting 81-column highlighting line.
 "set colorcolumn=81
@@ -120,6 +118,7 @@ set display=lastline
 set hidden
 " Close confirmation for unsaved buffers
 "set confirm
+
 " Unprintable chars mapping
 if !($TERM == 'linux')
   set listchars=eol:↵,tab:•\ ,trail:•,extends:»,precedes:«
@@ -146,10 +145,24 @@ function! TrimWhiteSpace()
   %s/\s\+$//e
 endfunction
 
+" No-break indent paste mode toogle
+set pastetoggle=<F2>
+
 function! FoldLongLines()
   " Implement detection of was text area specified or not
   " Be careful with non-latin character sets
   %!fold -s -w 80
+endfunction
+
+let &t_SI .= "\<Esc>[?2004h"
+let &t_EI .= "\<Esc>[?2004l"
+
+inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
+
+function! XTermPasteBegin()
+  set pastetoggle=<Esc>[201~
+  set paste
+  return ""
 endfunction
 
 " Keyboard mappings
