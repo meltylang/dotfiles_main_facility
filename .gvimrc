@@ -4,3 +4,4 @@ win 120 40
 colors elflord
 set guioptions-=L
 set guioptions-=r
+set guioptions+=mT
