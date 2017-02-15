@@ -10,6 +10,8 @@ endif
 
 set nocompatible              " be iMproved, required
 filetype off                  " required
+" allow backspacing over everything in insert mode
+set backspace=indent,eol,start
 
 " Vundle VIM-package manager initialization
 " set the runtime path to include Vundle and initialize
