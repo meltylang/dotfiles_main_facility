@@ -116,7 +116,9 @@ set expandtab  " Always uses spaces instead of tab characters
 set autoindent " Copy indent from current line when starting a new line
 " Next two options make searces simplier and visual.
 set ignorecase
-" set hlsearch
+" Search higlight toggle
+set hlsearch!
+nnoremap <F3> :set hlsearch!<CR>
 " Show as much as possible of a wrapped last line, not just "@".
 set display=lastline
 " Allow to switch between buffers without sawing them
