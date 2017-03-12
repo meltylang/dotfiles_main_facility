@@ -26,7 +26,6 @@ call vundle#begin()
   Plugin 'xolox/vim-session'
   Plugin 'vim-airline/vim-airline'        " airline plugin
   Plugin 'vim-airline/vim-airline-themes'
-  Plugin 'rhysd/vim-crystal'
   Plugin 'Yggdroot/indentLine'            " indentatin guides
   Plugin 'rking/ag.vim'                   " Ag (silver search) integration
   Plugin 'jlanzarotta/bufexplorer'
@@ -128,9 +127,9 @@ set hidden
 
 " Unprintable chars mapping
 if !($TERM == 'linux')
-  set listchars=eol:↵,tab:•\ ,trail:•,extends:»,precedes:«
+  set listchars=eol:↵,tab:\ \ ,trail:•,extends:»,precedes:«
 else
-  set listchars=eol:$,tab:•\ ,trail:•,extends:»,precedes:«
+  set listchars=eol:$,tab:\ \ ,trail:•,extends:»,precedes:«
 endif
 " Display unprintable characters f12 - switches
 set list
@@ -145,6 +144,11 @@ function! ToggleSyntax()
     syntax enable
   endif
   redraw
+endfunction
+
+" Unprintable characters show toggle
+function! ToggleList()
+  set list!
 endfunction
 
 " Removes trailing spaces
@@ -183,12 +187,12 @@ vnoremap <Down> gj
 vnoremap <Up> gk
 inoremap <Down> <C-o>gj
 inoremap <Up> <C-o>gk
+" Plugins key mappings
+map       <C-n> :NERDTreeToggle<CR>
 " Buffers navigation. <Leader> by default mapped to "\" character.
 nmap      <Leader>[ :bp<CR>
 nmap      <Leader>] :bn<CR>
-" Plugins key mappings
-map       <C-n> :NERDTreeToggle<CR>
-" Function key mappings
+" User functions key mappings
 nmap      <silent>  ;s  :call ToggleSyntax()<CR>
 nnoremap  <silent> <Leader>rts :call TrimWhiteSpace()<CR>
-
+map       <F4> :call ToggleList()<CR>
