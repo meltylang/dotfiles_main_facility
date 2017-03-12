@@ -76,17 +76,6 @@ if has('autocmd')
   autocmd GUIEnter * set visualbell t_vb=
 endif
 
-" 80 columns limit guide
-" Setting color column after syntax, because of syntax at startup overrides
-" color setting. Dark gray (8) colorcolumn.
-hi ColorColumn ctermbg=8
-" Setting 81-column highlighting line.
-"set colorcolumn=81
-" Another method: highlighted only symbols in lines, if there is no limit
-" exceed no column will shown.
-"highlight ColorColumn ctermbg=darkgray
-"call matchadd('ColorColumn', '\%81v', 100)
-
 " Swap files options:
 " Turn swap files off:
 set noswapfile
@@ -95,8 +84,6 @@ set noswapfile
 "set directory=~/.vim/swap//
 "set undodir=~/.vim/undo//
 
-" Line numbers
-"set number
 " The following are commented out as they cause vim to behave a lot
 " differently from regular Vi. They are highly recommended though.
 "set showcmd       " Show (partial) command in status line.
@@ -110,7 +97,7 @@ set shiftwidth=2   " Size of an indent
 " other than the (hard)tabstop
 set softtabstop=2
 " Make -tab- insert indents instead of tabs at the beginning of a line
-set smarttab       
+set smarttab
 set expandtab  " Always uses spaces instead of tab characters
 set autoindent " Copy indent from current line when starting a new line
 " Next two options make searces simplier and visual.
@@ -145,11 +132,6 @@ function! ToggleSyntax()
   redraw
 endfunction
 
-" Unprintable characters show toggle
-function! ToggleList()
-  set list!
-endfunction
-
 " Removes trailing spaces
 function! TrimWhiteSpace()
   %s/\s\+$//e
@@ -165,6 +147,58 @@ function! XTermPasteBegin()
   set pastetoggle=<Esc>[201~
   set paste
   return ""
+endfunction
+
+" Unprintable characters show toggle
+function! ToggleList()
+  Bufdo execute "set list!"
+endfunction
+
+function! NumberToggle()
+  Bufdo execute "set number!"
+endfunction
+
+"Run a command in multiple buffers
+"source: http://vim.wikia.com/wiki/Run_a_command_in_multiple_buffers
+" Like windo but restore the current window.
+function! WinDo(command)
+  let currwin=winnr()
+  execute 'windo ' . a:command
+  execute currwin . 'wincmd w'
+endfunction
+com! -nargs=+ -complete=command Windo call WinDo(<q-args>)
+" Like bufdo but restore the current buffer.
+function! BufDo(command)
+  let currBuff=bufnr("%")
+  execute 'bufdo ' . a:command
+  execute 'buffer ' . currBuff
+endfunction
+com! -nargs=+ -complete=command Bufdo call BufDo(<q-args>)
+" Like tabdo but restore the current tab.
+function! TabDo(command)
+  let currTab=tabpagenr()
+  execute 'tabdo ' . a:command
+  execute 'tabn ' . currTab
+endfunction
+com! -nargs=+ -complete=command Tabdo call TabDo(<q-args>)
+
+" 80 columns limit guide
+" Setting color column after syntax, because of syntax at startup overrides
+" color setting. Dark gray (8) colorcolumn.
+hi ColorColumn ctermbg=8
+" Another method: highlighted only symbols in lines, if there is no limit
+" exceed no column will shown.
+"highlight ColorColumn ctermbg=darkgray
+"call matchadd('ColorColumn', '\%81v', 100)
+let g:colorcolumn_guide = 81
+function! ColonGuideToggle()
+  let s:colorcolumn_state = &colorcolumn
+  if (s:colorcolumn_state == '0') || (&colorcolumn == '')
+    Bufdo execute "let &colorcolumn = g:colorcolumn_guide"
+  elseif s:colorcolumn_state == g:colorcolumn_guide
+    Bufdo execute "let &colorcolumn = 0"
+  endif
+  set colorcolumn
 endfunction
 
 " Keyboard mappings
@@ -192,5 +226,7 @@ nmap      <Leader>] :bn<CR>
 " User functions key mappings
 nmap      <silent>  ;s  :call ToggleSyntax()<CR>
 nnoremap  <silent> <Leader>rts :call TrimWhiteSpace()<CR>
-nnoremap <F3> :set hlsearch!<CR>
+nnoremap  <F3> :set hlsearch!<CR>
 map       <F4> :call ToggleList()<CR>
+map       <F5> :call NumberToggle()<CR>
+map       <F6> :call ColonGuideToggle()<CR>
