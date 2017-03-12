@@ -109,15 +109,14 @@ set shiftwidth=2   " Size of an indent
 " A combination of spaces and tabs are used to simulate tab stops at a width
 " other than the (hard)tabstop
 set softtabstop=2
-set smarttab       " Make -tab- insert indents instead of tabs at the beginning
-                   " of a line
+" Make -tab- insert indents instead of tabs at the beginning of a line
+set smarttab       
 set expandtab  " Always uses spaces instead of tab characters
 set autoindent " Copy indent from current line when starting a new line
 " Next two options make searces simplier and visual.
 set ignorecase
 " Search higlight toggle
 set hlsearch!
-nnoremap <F3> :set hlsearch!<CR>
 " Show as much as possible of a wrapped last line, not just "@".
 set display=lastline
 " Allow to switch between buffers without sawing them
@@ -156,19 +155,11 @@ function! TrimWhiteSpace()
   %s/\s\+$//e
 endfunction
 
-" No-break indent paste mode toogle
-set pastetoggle=<F2>
-
 function! FoldLongLines()
   " Implement detection of was text area specified or not
   " Be careful with non-latin character sets
   %!fold -s -w 80
 endfunction
-
-let &t_SI .= "\<Esc>[?2004h"
-let &t_EI .= "\<Esc>[?2004l"
-
-inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
 
 function! XTermPasteBegin()
   set pastetoggle=<Esc>[201~
@@ -177,6 +168,12 @@ function! XTermPasteBegin()
 endfunction
 
 " Keyboard mappings
+" GUI-style copy-paste
+let &t_SI .= "\<Esc>[?2004h"
+let &t_EI .= "\<Esc>[?2004l"
+inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
+" No-break indent paste mode toogle
+set pastetoggle=<F2>
 " And keyboard remappings for vertical navigation
 nnoremap j gj
 nnoremap k gk
@@ -195,4 +192,5 @@ nmap      <Leader>] :bn<CR>
 " User functions key mappings
 nmap      <silent>  ;s  :call ToggleSyntax()<CR>
 nnoremap  <silent> <Leader>rts :call TrimWhiteSpace()<CR>
+nnoremap <F3> :set hlsearch!<CR>
 map       <F4> :call ToggleList()<CR>
