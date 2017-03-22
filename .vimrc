@@ -111,15 +111,6 @@ set hidden
 " Close confirmation for unsaved buffers
 "set confirm
 
-" Unprintable chars mapping
-if !($TERM == 'linux')
-  set listchars=eol:↵,tab:\ \ ,trail:•,extends:»,precedes:«
-else
-  set listchars=eol:$,tab:\ \ ,trail:•,extends:»,precedes:«
-endif
-" Display unprintable characters f12 - switches
-set list
-
 " Syntax for thor files (like ruby)
 au BufRead,BufNewFile *.thor set filetype=ruby
 
@@ -149,6 +140,15 @@ function! XTermPasteBegin()
   return ""
 endfunction
 
+" Unprintable characters section
+" Unprintable chars mapping
+if !($TERM == 'linux')
+  set listchars=eol:↵,tab:\ \ ,trail:•,extends:»,precedes:«
+else
+  set listchars=eol:$,tab:\ \ ,trail:•,extends:»,precedes:«
+endif
+" Display unprintable characters f12 - switches
+"set list
 " Unprintable characters show toggle
 function! ToggleList()
   Bufdo execute "set list!"
@@ -158,8 +158,8 @@ function! NumberToggle()
   Bufdo execute "set number!"
 endfunction
 
-"Run a command in multiple buffers
-"source: http://vim.wikia.com/wiki/Run_a_command_in_multiple_buffers
+" Run a command in multiple buffers
+" source: http://vim.wikia.com/wiki/Run_a_command_in_multiple_buffers
 " Like windo but restore the current window.
 function! WinDo(command)
   let currwin=winnr()
@@ -202,6 +202,9 @@ function! ColonGuideToggle()
 endfunction
 
 " Keyboard mappings
+" Plugins key mappings
+map      <C-n> :NERDTreeToggle<CR>
+" User functions key mappings
 " GUI-style copy-paste
 let &t_SI .= "\<Esc>[?2004h"
 let &t_EI .= "\<Esc>[?2004l"
@@ -218,15 +221,12 @@ vnoremap <Down> gj
 vnoremap <Up> gk
 inoremap <Down> <C-o>gj
 inoremap <Up> <C-o>gk
-" Plugins key mappings
-map       <C-n> :NERDTreeToggle<CR>
 " Buffers navigation. <Leader> by default mapped to "\" character.
-nmap      <Leader>[ :bp<CR>
-nmap      <Leader>] :bn<CR>
-" User functions key mappings
-nmap      <silent>  ;s  :call ToggleSyntax()<CR>
-nnoremap  <silent> <Leader>rts :call TrimWhiteSpace()<CR>
-nnoremap  <F3> :set hlsearch!<CR>
-map       <F4> :call ToggleList()<CR>
-map       <F5> :call NumberToggle()<CR>
-map       <F6> :call ColonGuideToggle()<CR>
+nmap     <Leader>[ :bp<CR>
+nmap     <Leader>] :bn<CR>
+nmap     <silent>  ;s  :call ToggleSyntax()<CR>
+nnoremap <silent> <Leader>rts :call TrimWhiteSpace()<CR>
+nnoremap <F3> :set hlsearch!<CR>
+map      <F4> :call ToggleList()<CR>
+map      <F5> :call NumberToggle()<CR>
+map      <F6> :call ColonGuideToggle()<CR>
