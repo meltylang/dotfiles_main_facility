@@ -12,6 +12,7 @@
  ;; If there is more than one, they won't work right.
  '(default ((t (:family "PragmataPro" :foundry "unknown" :slant normal :weight normal :height 138 :width normal)))))
 
+;; Used KDE settings instead
 ;; Use Super key (key with windows or another label) as meta key.
-(setq  x-meta-keysym 'super
-       x-super-keysym 'meta)
+;;(setq  x-meta-keysym 'super
+;;       x-super-keysym 'meta)
