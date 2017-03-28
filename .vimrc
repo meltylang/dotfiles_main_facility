@@ -219,8 +219,9 @@ nnoremap <Up> gk
 vnoremap k gk
 vnoremap <Down> gj
 vnoremap <Up> gk
-inoremap <Down> <C-o>gj
-inoremap <Up> <C-o>gk
+" These next two are slow because of <C-o> switching, can it be fixed?
+inoremap <silent> <Down> <C-o>gj
+inoremap <silent> <Up> <C-o>gk
 " Buffers navigation. <Leader> by default mapped to "\" character.
 nmap     <Leader>[ :bp<CR>
 nmap     <Leader>] :bn<CR>
