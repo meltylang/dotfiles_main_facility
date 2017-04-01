@@ -1,8 +1,8 @@
 # GNU/Screen config
 # enabling color support in screen:
-attrcolor b ".I"
-termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E38;5;%dm'
-defbce on
+#attrcolor b ".I"
+#termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E38;5;%dm'
+#defbce on
 
 # no welcome message
 startup_message off
@@ -17,7 +17,7 @@ layout save default
 # the following two lines give a two-line status, with the current window 
 # highlighted
 hardstatus alwayslastline
-hardstatus string "%{= kG}[%{y}GNU/Screen%{G}][%= %{= kw}%-w%{+b yw} %n*%t%?(%u)%? %{-}%+w %=%{g}][%{B}%c:%s%{Y}-%{B}%d/%m/%y%{G}]"
+hardstatus string "[GNU/Screen][%= %-w %n*%t%?(%u)%? %{-}%+w %=][%c:%s-%d/%m/%y]"
 
 mousetrack off
 

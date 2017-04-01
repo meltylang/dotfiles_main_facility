@@ -52,7 +52,7 @@ endif
 let g:airline#extensions#tabline#enabled = 1
 " Show just the filename
 let g:airline#extensions#tabline#fnamemod = ':t'
-
+let g:airline_symbols_ascii = 1
 let g:airline_theme = 'dark'
 
 " vim-session settings
@@ -142,10 +142,11 @@ endfunction
 
 " Unprintable characters section
 " Unprintable chars mapping
-if !($TERM == 'linux')
+if !( $TERM == "linux" || $TERM == "screen" || $TERM == "tmux" ||
+      \ $TERM == "screen.linux" || $TERM == "tmux.linux" )
   set listchars=eol:↵,tab:\ \ ,trail:•,extends:»,precedes:«
 else
-  set listchars=eol:$,tab:\ \ ,trail:•,extends:»,precedes:«
+  set listchars=eol:¬,tab:\ \ ,trail:•,extends:»,precedes:«
 endif
 " Display unprintable characters f12 - switches
 "set list
@@ -185,7 +186,11 @@ com! -nargs=+ -complete=command Tabdo call TabDo(<q-args>)
 " 80 columns limit guide
 " Setting color column after syntax, because of syntax at startup overrides
 " color setting. Dark gray (8) colorcolumn.
-hi ColorColumn ctermbg=8
+if !( $TERM == "linux" || $TERM == "screen" || $TERM == "tmux" ||
+      \ $TERM == "screen.linux" || $TERM == "tmux.linux" )
+  hi ColorColumn ctermbg=8
+endif
+
 " Another method: highlighted only symbols in lines, if there is no limit
 " exceed no column will shown.
 "highlight ColorColumn ctermbg=darkgray
