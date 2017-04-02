@@ -53,7 +53,6 @@ let g:airline#extensions#tabline#enabled = 1
 " Show just the filename
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline_symbols_ascii = 1
-let g:airline_theme = 'dark'
 
 " vim-session settings
 let g:session_autosave = 'no'
@@ -140,13 +139,15 @@ function! XTermPasteBegin()
   return ""
 endfunction
 
-" Unprintable characters section
+" Unprintable characters section and airline theme
 " Unprintable chars mapping
 if !( $TERM == "linux" || $TERM == "screen" || $TERM == "tmux" ||
       \ $TERM == "screen.linux" || $TERM == "tmux.linux" )
   set listchars=eol:↵,tab:\ \ ,trail:•,extends:»,precedes:«
+  let g:airline_theme = 'dark'
 else
   set listchars=eol:¬,tab:\ \ ,trail:•,extends:»,precedes:«
+  let g:airline_theme = 'base16_grayscale'
 endif
 " Display unprintable characters f12 - switches
 "set list
