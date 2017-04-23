@@ -29,10 +29,14 @@ call vundle#begin()
   Plugin 'Yggdroot/indentLine'            " indentatin guides
   Plugin 'rking/ag.vim'                   " Ag (silver search) integration
   Plugin 'jlanzarotta/bufexplorer'
+  Plugin 'scrooloose/nerdcommenter'
+  Plugin 'majutsushi/tagbar'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
 " Vundle initialization section end
+
+filetype plugin on " for nerdcommenter
 
 " Setting color mode because of Konsole, missbehaving(?) without tha option
 if !($TERM == 'linux')
@@ -57,10 +61,6 @@ let g:airline_symbols_ascii = 1
 " vim-session settings
 let g:session_autosave = 'no'
 let g:session_autoload = 'no'
-
-if has('autocmd')
-  filetype plugin indent on
-endif
 
 if has('syntax') && !exists('g:syntax_on')
   syntax enable
@@ -237,3 +237,5 @@ nnoremap <F3> :set hlsearch!<CR>
 map      <F4> :call ToggleList()<CR>
 map      <F5> :call NumberToggle()<CR>
 map      <F6> :call ColonGuideToggle()<CR>
+" Tagbar plugin shortcut
+nmap     <F8> :TagbarToggle<CR>
