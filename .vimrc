@@ -31,6 +31,7 @@ call vundle#begin()
   Plugin 'jlanzarotta/bufexplorer'
   Plugin 'scrooloose/nerdcommenter'
   Plugin 'majutsushi/tagbar'
+  Plugin 'vim-syntastic/syntastic'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -102,7 +103,7 @@ set autoindent " Copy indent from current line when starting a new line
 " Next two options make searces simplier and visual.
 set ignorecase
 " Search higlight toggle
-set hlsearch!
+set nohls
 " Show as much as possible of a wrapped last line, not just "@".
 set display=lastline
 " Allow to switch between buffers without sawing them
@@ -141,16 +142,15 @@ endfunction
 
 " Unprintable characters section and airline theme
 " Unprintable chars mapping
-if !( $TERM == "linux" || $TERM == "screen" || $TERM == "tmux" ||
-      \ $TERM == "screen.linux" || $TERM == "tmux.linux" )
+if !( $TERM == "linux" || $TERM == "screen.linux" || 
+      \ $TERM == "tmux.linux" )
   set listchars=eol:↵,tab:\ \ ,trail:•,extends:»,precedes:«
   let g:airline_theme = 'dark'
 else
   set listchars=eol:¬,tab:\ \ ,trail:•,extends:»,precedes:«
   let g:airline_theme = 'base16_grayscale'
 endif
-" Display unprintable characters f12 - switches
-"set list
+
 " Unprintable characters show toggle
 function! ToggleList()
   Bufdo execute "set list!"
