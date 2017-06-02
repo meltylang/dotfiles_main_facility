@@ -1,5 +1,5 @@
 "set guifont=DejaVu\ Sans\ Mono\ 12
-set guifont=Pragmata\ Pro\ 14
+set guifont=Pragmata\ Pro\ Mono\ Regular\ 13
 win 120 40
 
 colors evening

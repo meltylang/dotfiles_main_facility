@@ -54,8 +54,8 @@ xterm*metaSendsEscape:      true
 xterm*loginShell:           true
 xterm*renderFont:           true
 !xterm*faceName:            DejaVu Sans Mono
-xterm*faceName:             xft:PragmataPro
-xterm*faceSize:             14
+xterm*faceName:             xft:Pragmata Pro Mono Regular
+xterm*faceSize:             13
 xterm*termName:             xterm-256color
 xterm*charClass:            33:48,35:48,37:48,43:48,45-47:48,64:48,95:48,126:48
 xterm*vt100*geometry:       _term_size

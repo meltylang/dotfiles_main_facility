@@ -8,11 +8,8 @@ if filereadable("/etc/vim/vimrc.local")
   source /etc/vim/vimrc.local
 endif
 
-set nocompatible              " be iMproved, required
-filetype off                  " required
-" allow backspacing over everything in insert mode
-set backspace=indent,eol,start
-
+set nocompatible              " be iMproved, required by vundle
+filetype off                  " required by vundle
 " Vundle VIM-package manager initialization
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -32,12 +29,21 @@ call vundle#begin()
   Plugin 'scrooloose/nerdcommenter'
   Plugin 'majutsushi/tagbar'
   Plugin 'vim-syntastic/syntastic'
+  Plugin 'vim-ruby/vim-ruby'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
 " Vundle initialization section end
 
 filetype plugin on " for nerdcommenter
+
+" vim-ruby plugin configuration section
+set nocompatible      " We're running Vim, not Vi!
+syntax on             " Enable syntax highlighting
+filetype on           " Enable filetype detection
+filetype indent on    " Enable filetype-specific indenting
+filetype plugin on    " Enable filetype-specific plugins
+" vim-ruby section end
 
 " Setting color mode because of Konsole, missbehaving(?) without tha option
 if !($TERM == 'linux')
@@ -76,6 +82,8 @@ if has('autocmd')
   autocmd GUIEnter * set visualbell t_vb=
 endif
 
+" allow backspacing over everything in insert mode
+set backspace=indent,eol,start
 " Swap files options:
 " Turn swap files off:
 set noswapfile
