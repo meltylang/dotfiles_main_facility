@@ -30,6 +30,7 @@ call vundle#begin()
   Plugin 'majutsushi/tagbar'
   Plugin 'vim-syntastic/syntastic'
   Plugin 'vim-ruby/vim-ruby'
+  Plugin 'tpope/vim-rails'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -150,7 +151,7 @@ endfunction
 
 " Unprintable characters section and airline theme
 " Unprintable chars mapping
-if !( $TERM == "linux" || $TERM == "screen.linux" || 
+if !( $TERM == "linux" || $TERM == "screen.linux" ||
       \ $TERM == "tmux.linux" )
   set listchars=eol:↵,tab:\ \ ,trail:•,extends:»,precedes:«
   let g:airline_theme = 'dark'
@@ -158,15 +159,6 @@ else
   set listchars=eol:¬,tab:\ \ ,trail:•,extends:»,precedes:«
   let g:airline_theme = 'base16_grayscale'
 endif
-
-" Unprintable characters show toggle
-function! ToggleList()
-  Bufdo execute "set list!"
-endfunction
-
-function! NumberToggle()
-  Bufdo execute "set number!"
-endfunction
 
 " Run a command in multiple buffers
 " source: http://vim.wikia.com/wiki/Run_a_command_in_multiple_buffers
@@ -192,6 +184,28 @@ function! TabDo(command)
 endfunction
 com! -nargs=+ -complete=command Tabdo call TabDo(<q-args>)
 
+" Unprintable characters show toggle
+function! ToggleList()
+  if (&list == '0')
+    Bufdo execute "let &list = 1"
+    Windo execute "let &list = 1"
+  else
+    Bufdo execute "let &list = 0"
+    Windo execute "let &list = 0"
+  endif
+endfunction
+
+" Line numbers toggle
+function! NumberToggle()
+  if (&number == '0')
+    Bufdo execute "let &number = 1"
+    Windo execute "let &number = 1"
+  else
+    Bufdo execute "let &number = 0"
+    Windo execute "let &number = 0"
+  endif
+endfunction
+
 " 80 columns limit guide
 " Setting color column after syntax, because of syntax at startup overrides
 " color setting. Dark gray (8) colorcolumn.
@@ -199,18 +213,21 @@ if !( $TERM == "linux" || $TERM == "screen" || $TERM == "tmux" ||
       \ $TERM == "screen.linux" || $TERM == "tmux.linux" )
   hi ColorColumn ctermbg=8
 endif
-
 " Another method: highlighted only symbols in lines, if there is no limit
 " exceed no column will shown.
 "highlight ColorColumn ctermbg=darkgray
 "call matchadd('ColorColumn', '\%81v', 100)
 let g:colorcolumn_guide = 81
+let g:column_actions = [ "let &colorcolumn = g:colorcolumn_guide",
+      \ "let &colorcolumn = 0" ]
 function! ColonGuideToggle()
   let s:colorcolumn_state = &colorcolumn
   if (s:colorcolumn_state == '0') || (&colorcolumn == '')
-    Bufdo execute "let &colorcolumn = g:colorcolumn_guide"
+    Bufdo execute g:column_actions[0]
+    Windo execute g:column_actions[0]
   elseif s:colorcolumn_state == g:colorcolumn_guide
-    Bufdo execute "let &colorcolumn = 0"
+    Bufdo execute g:column_actions[1]
+    Windo execute g:column_actions[1]
   endif
   set colorcolumn
 endfunction
@@ -246,4 +263,10 @@ map      <F4> :call ToggleList()<CR>
 map      <F5> :call NumberToggle()<CR>
 map      <F6> :call ColonGuideToggle()<CR>
 " Tagbar plugin shortcut
-nmap     <F8> :TagbarToggle<CR>
+nnoremap <silent> <F9> :TagbarToggle<CR>
+" delete without yanking
+nnoremap <leader>d "_d
+vnoremap <leader>d "_d
+" replace currently selected text with default register
+" without yanking it
+vnoremap <leader>p "_dP

@@ -23,3 +23,6 @@ mousetrack off
 
 # RVM tweak
 shell -${SHELL}
+
+# Always start `screen` with UTF-8 enabled (`screen -U`)
+defutf8 on
