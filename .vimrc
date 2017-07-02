@@ -14,7 +14,7 @@ filetype off                  " required by vundle
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-
+"""
   " Required for Vundle
   Plugin 'VundleVim/Vundle.vim'
   " Plugins
@@ -31,7 +31,7 @@ call vundle#begin()
   Plugin 'vim-syntastic/syntastic'
   Plugin 'vim-ruby/vim-ruby'
   Plugin 'tpope/vim-rails'
-
+"""
 call vundle#end()            " required
 filetype plugin indent on    " required
 " Vundle initialization section end
@@ -46,7 +46,32 @@ filetype indent on    " Enable filetype-specific indenting
 filetype plugin on    " Enable filetype-specific plugins
 " vim-ruby section end
 
-" Setting color mode because of Konsole, missbehaving(?) without tha option
+" Enable vim-airline
+let g:airline#extensions#tabline#enabled = 1
+" Show just the filename
+let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline_symbols_ascii = 1
+
+" vim-session settings
+let g:session_autosave = 'no'
+let g:session_autoload = 'no'
+
+" indentLine section
+if has('syntax') && !exists('g:syntax_on')
+  syntax enable
+  let g:indentLine_enabled = 1
+else
+  let g:indentLine_enabled = 0
+endif
+" indentLine section end
+
+"Disable system bell (beep)
+set noerrorbells visualbell t_vb=
+if has('autocmd')
+  autocmd GUIEnter * set visualbell t_vb=
+endif
+
+" Setting color mode because of Konsole, missbehaving(?) without that option
 if !($TERM == 'linux')
   set t_Co=256
   if !(has('clipboard') == 0)
@@ -60,27 +85,15 @@ if !($TERM == 'linux')
   endif
 endif
 
-" Enable vim-airline
-let g:airline#extensions#tabline#enabled = 1
-" Show just the filename
-let g:airline#extensions#tabline#fnamemod = ':t'
-let g:airline_symbols_ascii = 1
-
-" vim-session settings
-let g:session_autosave = 'no'
-let g:session_autoload = 'no'
-
-if has('syntax') && !exists('g:syntax_on')
-  syntax enable
-  let g:indentLine_enabled = 1
+" Unprintable characters section and airline theme
+" Unprintable chars mapping
+if !( $TERM == "linux" || $TERM == "screen.linux" ||
+      \ $TERM == "tmux.linux" )
+  set listchars=eol:↵,tab:\ \ ,trail:•,extends:»,precedes:«
+  let g:airline_theme = 'base16_default'
 else
-  let g:indentLine_enabled = 0
-endif
-
-"Disable system bell (beep)
-set noerrorbells visualbell t_vb=
-if has('autocmd')
-  autocmd GUIEnter * set visualbell t_vb=
+  set listchars=eol:¬,tab:\ \ ,trail:•,extends:»,precedes:«
+  let g:airline_theme = 'base16_grayscale'
 endif
 
 " allow backspacing over everything in insert mode
@@ -126,8 +139,10 @@ au BufRead,BufNewFile *.thor set filetype=ruby
 function! ToggleSyntax()
   if exists("g:syntax_on")
     syntax off
+    call Set_ccol_col()
   else
     syntax enable
+    call Set_ccol_col()
   endif
   redraw
 endfunction
@@ -148,17 +163,6 @@ function! XTermPasteBegin()
   set paste
   return ""
 endfunction
-
-" Unprintable characters section and airline theme
-" Unprintable chars mapping
-if !( $TERM == "linux" || $TERM == "screen.linux" ||
-      \ $TERM == "tmux.linux" )
-  set listchars=eol:↵,tab:\ \ ,trail:•,extends:»,precedes:«
-  let g:airline_theme = 'base16_default'
-else
-  set listchars=eol:¬,tab:\ \ ,trail:•,extends:»,precedes:«
-  let g:airline_theme = 'base16_grayscale'
-endif
 
 " Run a command in multiple buffers
 " source: http://vim.wikia.com/wiki/Run_a_command_in_multiple_buffers
@@ -206,13 +210,19 @@ function! NumberToggle()
   endif
 endfunction
 
+" COLOR COLUMN
 " 80 columns limit guide
 " Setting color column after syntax, because of syntax at startup overrides
 " color setting. Dark gray (8) colorcolumn.
-if !( $TERM == "linux" || $TERM == "screen" || $TERM == "tmux" ||
-      \ $TERM == "screen.linux" || $TERM == "tmux.linux" )
-  hi ColorColumn ctermbg=8
-endif
+function! Set_ccol_col()
+  " Set colorcolumn color
+  if !( $TERM == "linux" || $TERM == "screen" || $TERM == "tmux" ||
+        \ $TERM == "screen.linux" || $TERM == "tmux.linux" )
+    hi ColorColumn ctermbg=8
+  endif
+endfunction
+call Set_ccol_col() " initial execution
+
 " Another method: highlighted only symbols in lines, if there is no limit
 " exceed no column will shown.
 "highlight ColorColumn ctermbg=darkgray
