@@ -56,7 +56,7 @@ if !($TERM == 'linux')
   if $USER == 'root'
     colorscheme slate
   else
-    colorscheme elflord
+    colorscheme koehler
   endif
 endif
 
@@ -154,7 +154,7 @@ endfunction
 if !( $TERM == "linux" || $TERM == "screen.linux" ||
       \ $TERM == "tmux.linux" )
   set listchars=eol:↵,tab:\ \ ,trail:•,extends:»,precedes:«
-  let g:airline_theme = 'dark'
+  let g:airline_theme = 'base16_default'
 else
   set listchars=eol:¬,tab:\ \ ,trail:•,extends:»,precedes:«
   let g:airline_theme = 'base16_grayscale'
