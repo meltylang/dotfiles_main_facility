@@ -28,6 +28,8 @@ shell -${SHELL}
 defutf8 on
 
 # Dynamic window title trick:
+# solution from:
+# https://superuser.com/questions/244299/gnu-screen-how-to-update-dynamically-the-title-of-a-window
 # Turning on support for this feature
 defdynamictitle on
 # somewhere in .bashrc, e.g. in "case $TERM in" for "screen*" variant should be
