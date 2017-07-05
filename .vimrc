@@ -8,6 +8,7 @@ if filereadable("/etc/vim/vimrc.local")
   source /etc/vim/vimrc.local
 endif
 
+
 set nocompatible              " be iMproved, required by vundle
 filetype off                  " required by vundle
 " Vundle VIM-package manager initialization
@@ -65,11 +66,17 @@ else
 endif
 " indentLine section end
 
+" tagbar settings
+let g:tagbar_autofocus = 1
+" tagbar settings end
+
+
 "Disable system bell (beep)
 set noerrorbells visualbell t_vb=
 if has('autocmd')
   autocmd GUIEnter * set visualbell t_vb=
 endif
+
 
 " Setting color mode because of Konsole, missbehaving(?) without that option
 if !($TERM == 'linux')
@@ -85,6 +92,7 @@ if !($TERM == 'linux')
   endif
 endif
 
+
 " Unprintable characters section and airline theme
 " Unprintable chars mapping
 if !( $TERM == "linux" || $TERM == "screen.linux" ||
@@ -95,6 +103,7 @@ else
   set listchars=eol:¬,tab:\ \ ,trail:•,extends:»,precedes:«
   let g:airline_theme = 'base16_grayscale'
 endif
+
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
@@ -164,6 +173,7 @@ function! XTermPasteBegin()
   return ""
 endfunction
 
+
 " Run a command in multiple buffers
 " source: http://vim.wikia.com/wiki/Run_a_command_in_multiple_buffers
 " Like windo but restore the current window.
@@ -187,6 +197,7 @@ function! TabDo(command)
   execute 'tabn ' . currTab
 endfunction
 com! -nargs=+ -complete=command Tabdo call TabDo(<q-args>)
+
 
 " Unprintable characters show toggle
 function! ToggleList()

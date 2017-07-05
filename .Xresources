@@ -2,7 +2,7 @@
 ! Update settings:
 ! xrdb -merge ~/.Xresources
 
-#define _term_size          140x37
+#define _term_size          130x45
 
 *.cursorBlink:              true
 !*visualBellLine:            true

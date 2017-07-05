@@ -14,7 +14,7 @@ defscrollback 20000
 # Save splits automatically and restore them with next reattaching
 layout save default
 
-# the following two lines give a two-line status, with the current window 
+# the following two lines give a two-line status, with the current window
 # highlighted
 hardstatus alwayslastline
 hardstatus string "[GNU/Screen][%= %-w %n*%t%?(%u)%? %{-}%+w %=][%c:%s-%d/%m/%y]"
@@ -26,3 +26,13 @@ shell -${SHELL}
 
 # Always start `screen` with UTF-8 enabled (`screen -U`)
 defutf8 on
+
+# Dynamic window title trick:
+# Turning on support for this feature
+defdynamictitle on
+# somewhere in .bashrc, e.g. in "case $TERM in" for "screen*" variant should be
+# specified next command:
+#   PROMPT_COMMAND='echo -ne "\033k\033\\"'
+# Next one is for default value and depends on used shell and PS1 prompt end,
+# in my case PS1 ends with on underscore symbol( _ )
+shelltitle '_|bash'
