@@ -20,7 +20,7 @@ call vundle#begin()
   Plugin 'VundleVim/Vundle.vim'
   " Plugins
   Plugin 'scrooloose/nerdtree'
-  Plugin 'xolox/vim-misc'
+  Plugin 'xolox/vim-misc'                 " required for vim-session
   Plugin 'xolox/vim-session'
   Plugin 'vim-airline/vim-airline'        " airline plugin
   Plugin 'vim-airline/vim-airline-themes'
@@ -38,6 +38,10 @@ filetype plugin indent on    " required
 " Vundle initialization section end
 
 filetype plugin on " for nerdcommenter
+
+" vim-session settings
+let g:session_persist_colors = 0
+" vim-session settings end
 
 " vim-ruby plugin configuration section
 set nocompatible      " We're running Vim, not Vi!
@@ -90,6 +94,13 @@ if !($TERM == 'linux')
   else
     colorscheme koehler
   endif
+  " If running under gnu/screen in X session in gui-terminal
+  if $TERM == "screen.xterm-256color" ||
+        \ $TERM == "xterm-256color"   ||
+        \ $TERM == "xterm"
+    set mouse=a
+    set ttymouse=xterm2
+  endif
 endif
 
 
@@ -97,9 +108,11 @@ endif
 " Unprintable chars mapping
 if !( $TERM == "linux" || $TERM == "screen.linux" ||
       \ $TERM == "tmux.linux" )
+  " For tty text-only session
   set listchars=eol:↵,tab:\ \ ,trail:•,extends:»,precedes:«
   let g:airline_theme = 'base16_default'
 else
+  " if no tty-mode detected
   set listchars=eol:¬,tab:\ \ ,trail:•,extends:»,precedes:«
   let g:airline_theme = 'base16_grayscale'
 endif
@@ -251,6 +264,12 @@ function! ColonGuideToggle()
     Windo execute g:column_actions[1]
   endif
   set colorcolumn
+endfunction
+
+function! Remove_bom()
+  " Remove byte order marker from UTF-8 file
+  :setlocal nobomb
+  w
 endfunction
 
 " Keyboard mappings
