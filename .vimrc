@@ -146,8 +146,6 @@ set expandtab  " Always uses spaces instead of tab characters
 set autoindent " Copy indent from current line when starting a new line
 " Next two options make searces simplier and visual.
 set ignorecase
-" Search higlight toggle
-set nohls
 " Show as much as possible of a wrapped last line, not just "@".
 set display=lastline
 " Allow to switch between buffers without sawing them
@@ -234,6 +232,19 @@ function! NumberToggle()
   endif
 endfunction
 
+" Toggle text search highlight
+function! HLS_toggle()
+  if (&hlsearch == '0')
+    let &hlsearch = 1
+    let &incsearch = 1
+  else
+    let &hlsearch = 0
+    let &incsearch = 0
+  endif
+endfunction
+" Initial search higlight mode
+set nohls
+
 " COLOR COLUMN
 " 80 columns limit guide
 " Setting color column after syntax, because of syntax at startup overrides
@@ -298,7 +309,8 @@ nmap     <Leader>[ :bp<CR>
 nmap     <Leader>] :bn<CR>
 nmap     <silent>  ;s  :call ToggleSyntax()<CR>
 nnoremap <silent> <Leader>rts :call TrimWhiteSpace()<CR>
-nnoremap <F3> :set hlsearch!<CR>
+"nnoremap <F3> :set hlsearch!<CR>
+nnoremap <F3> :call HLS_toggle()<CR>
 map      <F4> :call ToggleList()<CR>
 map      <F5> :call NumberToggle()<CR>
 map      <F6> :call ColonGuideToggle()<CR>
