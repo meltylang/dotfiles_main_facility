@@ -32,6 +32,7 @@ call vundle#begin()
   Plugin 'vim-syntastic/syntastic'
   Plugin 'vim-ruby/vim-ruby'
   Plugin 'tpope/vim-rails'
+  Plugin 'henrik/vim-indexed-search'
 """
 call vundle#end()            " required
 filetype plugin indent on    " required
