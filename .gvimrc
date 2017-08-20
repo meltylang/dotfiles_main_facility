@@ -7,10 +7,10 @@ source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
 
 "set guifont=DejaVu\ Sans\ Mono\ 12
-set guifont=Pragmata\ Pro\ Mono\ Regular\ 13
+set guifont=Pragmata\ Pro\ Mono\ Regular\ 14
 win 120 40
 
-colors evening
+colors koehler
 set guioptions-=L " vertical-split left-hand scrollbar
 set guioptions-=r " right-hand scrollbar
 set guioptions+=mT " Menu and toolbar

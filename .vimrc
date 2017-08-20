@@ -8,7 +8,6 @@ if filereadable("/etc/vim/vimrc.local")
   source /etc/vim/vimrc.local
 endif
 
-
 set nocompatible              " be iMproved, required by vundle
 filetype off                  " required by vundle
 " Vundle VIM-package manager initialization
@@ -42,6 +41,7 @@ filetype plugin on " for nerdcommenter
 
 " vim-session settings
 let g:session_persist_colors = 0
+let g:session_persist_font = 0
 " vim-session settings end
 
 " vim-ruby plugin configuration section
@@ -52,18 +52,25 @@ filetype indent on    " Enable filetype-specific indenting
 filetype plugin on    " Enable filetype-specific plugins
 " vim-ruby section end
 
+" Turn on evalution of ruby code for completition
+let g:rubycomplete_buffer_loading = 1
+let g:rubycomplete_classes_in_global = 1
+let g:rubycomplete_rails = 1
+
 " Enable vim-airline
 let g:airline#extensions#tabline#enabled = 1
 " Show just the filename
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline_symbols_ascii = 1
+"let g:airline#extensions#syntastic#enabled = 1
 
 " vim-session settings
 let g:session_autosave = 'no'
 let g:session_autoload = 'no'
 
 " indentLine section
-if has('syntax') && !exists('g:syntax_on')
+let g:indentLine_char = "┆"
+if has('syntax') && exists('g:syntax_on')
   syntax enable
   let g:indentLine_enabled = 1
 else
@@ -111,7 +118,7 @@ if !( $TERM == "linux" || $TERM == "screen.linux" ||
       \ $TERM == "tmux.linux" )
   " For tty text-only session
   set listchars=eol:↵,tab:\ \ ,trail:•,extends:»,precedes:«
-  let g:airline_theme = 'base16_default'
+  let g:airline_theme = 'base16_grayscale'
 else
   " if no tty-mode detected
   set listchars=eol:¬,tab:\ \ ,trail:•,extends:»,precedes:«
@@ -284,9 +291,9 @@ function! Remove_bom()
   w
 endfunction
 
-" Keyboard mappings
+" KEYBOARD MAPPINGS
 " Plugins key mappings
-map      <C-n> :NERDTreeToggle<CR>
+map <C-n> :NERDTreeToggle<CR>
 " User functions key mappings
 " GUI-style copy-paste
 let &t_SI .= "\<Esc>[?2004h"
@@ -299,22 +306,23 @@ nnoremap j gj
 nnoremap k gk
 nnoremap <Down> gj
 nnoremap <Up> gk
+vnoremap j gj
 vnoremap k gk
 vnoremap <Down> gj
 vnoremap <Up> gk
-" These next two are slow because of <C-o> switching, can it be fixed?
-inoremap <silent> <Down> <C-o>gj
-inoremap <silent> <Up> <C-o>gk
+" Disabled for the sake of better user experience,
+" and this is not always needed.
+"inoremap <silent> <Down> <C-o>gj
+"inoremap <silent> <Up> <C-o>gk
 " Buffers navigation. <Leader> by default mapped to "\" character.
-nmap     <Leader>[ :bp<CR>
-nmap     <Leader>] :bn<CR>
-nmap     <silent>  ;s  :call ToggleSyntax()<CR>
-nnoremap <silent> <Leader>rts :call TrimWhiteSpace()<CR>
-"nnoremap <F3> :set hlsearch!<CR>
-nnoremap <F3> :call HLS_toggle()<CR>
-map      <F4> :call ToggleList()<CR>
-map      <F5> :call NumberToggle()<CR>
-map      <F6> :call ColonGuideToggle()<CR>
+nmap <Leader>[ :bp<CR>
+nmap <Leader>] :bn<CR>
+nmap <silent>;s :call ToggleSyntax()<CR>
+nnoremap <silent>;w :call TrimWhiteSpace()<CR>
+nnoremap <silent><F3> :call HLS_toggle()<CR>
+map <F4> :call ToggleList()<CR>
+map <F5> :call NumberToggle()<CR>
+map <F6> :call ColonGuideToggle()<CR>
 " Tagbar plugin shortcut
 nnoremap <silent> <F9> :TagbarToggle<CR>
 " delete without yanking
