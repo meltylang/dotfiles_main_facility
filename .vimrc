@@ -3,11 +3,7 @@
 " :so $MYVIMRC — another way; :so ~/.vimrc — on unix; :so ~/_vimrc — on
 " windows.
 
-" Source a global configuration file if available
-if filereadable("/etc/vim/vimrc.local")
-  source /etc/vim/vimrc.local
-endif
-
+" VUNDLE plugin manager section
 set nocompatible              " be iMproved, required by vundle
 filetype off                  " required by vundle
 " Vundle VIM-package manager initialization
@@ -37,6 +33,7 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 " Vundle initialization section end
 
+" PLUGIN settings
 filetype plugin on " for nerdcommenter
 
 " vim-session settings
@@ -82,13 +79,11 @@ endif
 let g:tagbar_autofocus = 1
 " tagbar settings end
 
-
-"Disable system bell (beep)
+" Disable system bell (beep)
 set noerrorbells visualbell t_vb=
 if has('autocmd')
   autocmd GUIEnter * set visualbell t_vb=
 endif
-
 
 " Setting color mode because of Konsole, missbehaving(?) without that option
 if !($TERM == 'linux')
@@ -100,7 +95,7 @@ if !($TERM == 'linux')
   if $USER == 'root'
     colorscheme slate
   else
-    colorscheme koehler
+    colorscheme elflord
   endif
   " If running under gnu/screen in X session in gui-terminal
   if $TERM == "screen.xterm-256color" ||
@@ -110,7 +105,6 @@ if !($TERM == 'linux')
     set ttymouse=xterm2
   endif
 endif
-
 
 " Unprintable characters section and airline theme
 " Unprintable chars mapping
@@ -125,7 +119,6 @@ else
   let g:airline_theme = 'base16_grayscale'
 endif
 
-
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 " Swap files options:
@@ -135,23 +128,27 @@ set noswapfile
 "set backupdir=~/.vim/backup//
 "set directory=~/.vim/swap//
 "set undodir=~/.vim/undo//
-
-" The following are commented out as they cause vim to behave a lot
-" differently from regular Vi. They are highly recommended though.
-"set showcmd       " Show (partial) command in status line.
-set showmatch      " Show matching brackets.
-set laststatus=2   " Statusline : current mode, filename, encoding
+" Show (partial) command in status line.
+"set showcmd
+" Show matching brackets.
+set showmatch
+" Statusline : current mode, filename, encoding
+set laststatus=2
 " Dealing with encodings once and for all
 set encoding=utf-8 fileencoding=utf-8 termencoding=utf-8
-set tabstop=2      " Size of a hard tabstop
-set shiftwidth=2   " Size of an indent
+" Size of a hard tabstop
+set tabstop=2
+" Size of an indent
+set shiftwidth=2
 " A combination of spaces and tabs are used to simulate tab stops at a width
 " other than the (hard)tabstop
 set softtabstop=2
 " Make -tab- insert indents instead of tabs at the beginning of a line
 set smarttab
-set expandtab  " Always uses spaces instead of tab characters
-set autoindent " Copy indent from current line when starting a new line
+" Always uses spaces instead of tab characters
+set expandtab
+" Copy indent from current line when starting a new line
+set autoindent
 " Next two options make searces simplier and visual.
 set ignorecase
 " Show as much as possible of a wrapped last line, not just "@".
@@ -192,7 +189,6 @@ function! XTermPasteBegin()
   return ""
 endfunction
 
-
 " Run a command in multiple buffers
 " source: http://vim.wikia.com/wiki/Run_a_command_in_multiple_buffers
 " Like windo but restore the current window.
@@ -217,15 +213,16 @@ function! TabDo(command)
 endfunction
 com! -nargs=+ -complete=command Tabdo call TabDo(<q-args>)
 
-
 " Unprintable characters show toggle
 function! ToggleList()
   if (&list == '0')
     Bufdo execute "let &list = 1"
     Windo execute "let &list = 1"
+    Tabdo execute "let &list = 1"
   else
     Bufdo execute "let &list = 0"
     Windo execute "let &list = 0"
+    Tabdo execute "let &list = 0"
   endif
 endfunction
 
@@ -234,9 +231,11 @@ function! NumberToggle()
   if (&number == '0')
     Bufdo execute "let &number = 1"
     Windo execute "let &number = 1"
+    Tabdo execute "let &number = 1"
   else
     Bufdo execute "let &number = 0"
     Windo execute "let &number = 0"
+    Tabdo execute "let &number = 0"
   endif
 endfunction
 
@@ -278,9 +277,11 @@ function! ColonGuideToggle()
   if (s:colorcolumn_state == '0') || (&colorcolumn == '')
     Bufdo execute g:column_actions[0]
     Windo execute g:column_actions[0]
+    Tabdo execute g:column_actions[0]
   elseif s:colorcolumn_state == g:colorcolumn_guide
     Bufdo execute g:column_actions[1]
     Windo execute g:column_actions[1]
+    Tabdo execute g:column_actions[1]
   endif
   set colorcolumn
 endfunction

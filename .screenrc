@@ -38,3 +38,6 @@ defdynamictitle on
 # Next one is for default value and depends on used shell and PS1 prompt end,
 # in my case PS1 ends with on underscore symbol( _ )
 shelltitle '_|bash'
+
+# Make programms like vim clear screen and restore terminal contents after exit
+altscreen on
