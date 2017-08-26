@@ -10,7 +10,7 @@ source $VIMRUNTIME/menu.vim
 set guifont=Pragmata\ Pro\ Mono\ Regular\ 14
 win 120 40
 
-colors koehler
+colorscheme evening
 set guioptions-=L " vertical-split left-hand scrollbar
 set guioptions-=r " right-hand scrollbar
 set guioptions+=mT " Menu and toolbar

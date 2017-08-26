@@ -77,6 +77,7 @@ endif
 
 " tagbar settings
 let g:tagbar_autofocus = 1
+let g:tagbar_left = 1
 " tagbar settings end
 
 " Disable system bell (beep)
