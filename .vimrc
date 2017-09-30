@@ -98,11 +98,11 @@ if !($TERM == 'linux')
   else
     colorscheme elflord
   endif
-  " If running under gnu/screen in X session in gui-terminal
-  if $TERM == "screen.xterm-256color" ||
-        \ $TERM == "xterm-256color"   ||
+  " Faster settings for vim running under X
+  "screen.xterm-256color
+  if $TERM == "xterm-256color" ||
         \ $TERM == "xterm"
-    set mouse=a
+    set ttyfast
     set ttymouse=xterm2
   endif
 endif
@@ -176,6 +176,12 @@ endfunction
 " Removes trailing spaces
 function! TrimWhiteSpace()
   %s/\s\+$//e
+endfunction
+
+function! FoldLongLinesRu()
+  " Implement detection of was text area specified or not
+  " Be careful with non-latin character sets
+  %!fold -s -b -w 160
 endfunction
 
 function! FoldLongLines()
@@ -261,10 +267,22 @@ function! Set_ccol_col()
   " Set colorcolumn color
   if !( $TERM == "linux" || $TERM == "screen" || $TERM == "tmux" ||
         \ $TERM == "screen.linux" || $TERM == "tmux.linux" )
-    hi ColorColumn ctermbg=8
+    hi ColorColumn ctermbg=darkgray
   endif
 endfunction
 call Set_ccol_col() " initial execution
+
+function! Set_cline()
+  " Set cursor line
+  " Reference: http://vim.wikia.com/wiki/Highlight_current_line
+  hi CursorLine cterm=NONE ctermbg=black ctermfg=NONE guibg=darkred guifg=white
+endfunction
+call Set_cline() " initial execution
+
+function! ToggleCline()
+  " Toggle cursor line
+  set cursorline!
+endfunction
 
 " Another method: highlighted only symbols in lines, if there is no limit
 " exceed no column will shown.
@@ -325,6 +343,7 @@ nnoremap <silent><F3> :call HLS_toggle()<CR>
 map <F4> :call ToggleList()<CR>
 map <F5> :call NumberToggle()<CR>
 map <F6> :call ColonGuideToggle()<CR>
+map <F7> :call ToggleCline()<CR>
 " Tagbar plugin shortcut
 nnoremap <silent> <F9> :TagbarToggle<CR>
 " delete without yanking

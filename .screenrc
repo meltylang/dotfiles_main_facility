@@ -17,7 +17,7 @@ layout save default
 # the following two lines give a two-line status, with the current window
 # highlighted
 hardstatus alwayslastline
-hardstatus string "[GNU/Screen][%= %-w %n*%t%?(%u)%? %{-}%+w %=][%c:%s-%d/%m/%y]"
+hardstatus string "[GNU/Screen][%= %-w %n*%t%?(%u)%? %{-}%+w %=][%y/%m/%d-%c:%s]"
 
 mousetrack off
 
@@ -37,7 +37,7 @@ defdynamictitle on
 #   PROMPT_COMMAND='echo -ne "\033k\033\\"'
 # Next one is for default value and depends on used shell and PS1 prompt end,
 # in my case PS1 ends with on underscore symbol( _ )
-shelltitle '_|bash'
+shelltitle '[$]>_|bash'
 
 # Make programms like vim clear screen and restore terminal contents after exit
 altscreen on
