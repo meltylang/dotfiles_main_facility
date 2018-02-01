@@ -4,30 +4,39 @@
 " windows.
 
 " VUNDLE plugin manager section
+" Preconfiguration for vundle
 set nocompatible              " be iMproved, required by vundle
 filetype off                  " required by vundle
+
 " Vundle VIM-package manager initialization
+
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 """
   " Required for Vundle
   Plugin 'VundleVim/Vundle.vim'
-  " Plugins
-  Plugin 'scrooloose/nerdtree'
-  Plugin 'xolox/vim-misc'                 " required for vim-session
-  Plugin 'xolox/vim-session'
-  Plugin 'vim-airline/vim-airline'        " airline plugin
-  Plugin 'vim-airline/vim-airline-themes'
+  " Plugins:
+    Plugin 'scrooloose/nerdtree'
+  " vim-session begin
+    Plugin 'xolox/vim-misc'
+    Plugin 'xolox/vim-session'
+    " vim-session end
+  " airline begin
+    Plugin 'vim-airline/vim-airline'
+    Plugin 'vim-airline/vim-airline-themes'
+    " airline end
+  Plugin 'henrik/vim-indexed-search'
   Plugin 'Yggdroot/indentLine'            " indentatin guides
-  Plugin 'rking/ag.vim'                   " Ag (silver search) integration
   Plugin 'jlanzarotta/bufexplorer'
+  Plugin 'rking/ag.vim'                   " Ag (silver search) integration
   Plugin 'scrooloose/nerdcommenter'
   Plugin 'majutsushi/tagbar'
   Plugin 'vim-syntastic/syntastic'
-  Plugin 'vim-ruby/vim-ruby'
-  Plugin 'tpope/vim-rails'
-  Plugin 'henrik/vim-indexed-search'
+  " Ruby and Rails support begin
+    Plugin 'vim-ruby/vim-ruby'
+    Plugin 'tpope/vim-rails'
+    " Ruby and Rails support end
 """
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -339,11 +348,13 @@ nmap <Leader>[ :bp<CR>
 nmap <Leader>] :bn<CR>
 nmap <silent>;s :call ToggleSyntax()<CR>
 nnoremap <silent>;w :call TrimWhiteSpace()<CR>
+
 nnoremap <silent><F3> :call HLS_toggle()<CR>
 map <F4> :call ToggleList()<CR>
 map <F5> :call NumberToggle()<CR>
 map <F6> :call ColonGuideToggle()<CR>
 map <F7> :call ToggleCline()<CR>
+nnoremap <silent><F8> :IndentLinesToggle<CR>
 " Tagbar plugin shortcut
 nnoremap <silent> <F9> :TagbarToggle<CR>
 " delete without yanking
