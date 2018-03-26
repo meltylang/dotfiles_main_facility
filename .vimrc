@@ -167,6 +167,9 @@ set display=lastline
 set hidden
 " Close confirmation for unsaved buffers
 "set confirm
+" Speedup VIM
+" http://eduncan911.com/software/fix-slow-scrolling-in-vim-and-neovim.html
+set lazyredraw
 
 " Syntax for thor files (like ruby)
 au BufRead,BufNewFile *.thor set filetype=ruby
