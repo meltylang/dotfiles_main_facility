@@ -325,44 +325,48 @@ endfunction
 
 " KEYBOARD MAPPINGS
 " Plugins key mappings
-map <C-n> :NERDTreeToggle<CR>
+  map <C-n> :NERDTreeToggle<CR>
 " User functions key mappings
 " GUI-style copy-paste
-let &t_SI .= "\<Esc>[?2004h"
-let &t_EI .= "\<Esc>[?2004l"
-inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
+  let &t_SI .= "\<Esc>[?2004h"
+  let &t_EI .= "\<Esc>[?2004l"
+  inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
 " No-break indent paste mode toogle
-set pastetoggle=<F2>
+  set pastetoggle=<F2>
 " And keyboard remappings for vertical navigation
-nnoremap j gj
-nnoremap k gk
-nnoremap <Down> gj
-nnoremap <Up> gk
-vnoremap j gj
-vnoremap k gk
-vnoremap <Down> gj
-vnoremap <Up> gk
+  nnoremap j gj
+  nnoremap k gk
+  nnoremap <Down> gj
+  nnoremap <Up> gk
+  vnoremap j gj
+  vnoremap k gk
+  vnoremap <Down> gj
+  vnoremap <Up> gk
 " Disabled for the sake of better user experience,
 " and this is not always needed.
-"inoremap <silent> <Down> <C-o>gj
-"inoremap <silent> <Up> <C-o>gk
-" Buffers navigation. <Leader> by default mapped to "\" character.
-nmap <Leader>[ :bp<CR>
-nmap <Leader>] :bn<CR>
-nmap <silent>;s :call ToggleSyntax()<CR>
-nnoremap <silent>;w :call TrimWhiteSpace()<CR>
+  "inoremap <silent> <Down> <C-o>gj
+  "inoremap <silent> <Up> <C-o>gk
 
-nnoremap <silent><F3> :call HLS_toggle()<CR>
+" Buffers navigation. <Leader> by default mapped to "\" character.
+  nmap <Leader>[ :bp<CR>
+  nmap <Leader>] :bn<CR>
+" Toogle syntax highlighting
+  nmap <silent>;s :call ToggleSyntax()<CR>
+" Clear trailing whitespace
+  nnoremap <silent>;w :call TrimWhiteSpace()<CR>
+" Search highlight toogle
+  nnoremap <silent><F3> :call HLS_toggle()<CR>
 map <F4> :call ToggleList()<CR>
 map <F5> :call NumberToggle()<CR>
 map <F6> :call ColonGuideToggle()<CR>
-map <F7> :call ToggleCline()<CR>
+" Indicate current line with different color
+  map <F7> :call ToggleCline()<CR>
 nnoremap <silent><F8> :IndentLinesToggle<CR>
 " Tagbar plugin shortcut
-nnoremap <silent> <F9> :TagbarToggle<CR>
+  nnoremap <silent> <F9> :TagbarToggle<CR>
 " delete without yanking
-nnoremap <leader>d "_d
-vnoremap <leader>d "_d
+  nnoremap <leader>d "_d
+  vnoremap <leader>d "_d
 " replace currently selected text with default register
 " without yanking it
-vnoremap <leader>p "_dP
+  vnoremap <leader>p "_dP
