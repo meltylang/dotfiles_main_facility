@@ -12,14 +12,14 @@ startup_message off
 defscrollback 20000
 
 # Save splits automatically and restore them with next reattaching
-layout save default
+#layout save default
 
 # the following two lines give a two-line status, with the current window
 # highlighted
 hardstatus alwayslastline
 hardstatus string "[GNU/Screen][%= %-w %n*%t%?(%u)%? %{-}%+w %=][%y/%m/%d-%c:%s]"
 
-mousetrack off
+#mousetrack off
 
 # RVM tweak
 shell -${SHELL}
@@ -31,7 +31,7 @@ defutf8 on
 # solution from:
 # https://superuser.com/questions/244299/gnu-screen-how-to-update-dynamically-the-title-of-a-window
 # Turning on support for this feature
-defdynamictitle on
+#defdynamictitle on
 # somewhere in .bashrc, e.g. in "case $TERM in" for "screen*" variant should be
 # specified next command:
 #   PROMPT_COMMAND='echo -ne "\033k\033\\"'
