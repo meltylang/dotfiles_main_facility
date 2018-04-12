@@ -129,6 +129,10 @@ else
   let g:airline_theme = 'base16_grayscale'
 endif
 
+" Edit crontabs in MacOS
+" https://stackoverflow.com/questions/15395479/why-ive-got-no-crontab-entry-on-os-x-when-using-vim
+autocmd FileType crontab setlocal nowritebackup
+
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 " Swap files options:
@@ -170,7 +174,8 @@ set hidden
 " Speedup VIM
 " http://eduncan911.com/software/fix-slow-scrolling-in-vim-and-neovim.html
 set lazyredraw
-
+" String with options in command mode when pressing Tab
+set wildmenu
 " Syntax for thor files (like ruby)
 au BufRead,BufNewFile *.thor set filetype=ruby
 
@@ -346,7 +351,6 @@ endfunction
 " and this is not always needed.
   "inoremap <silent> <Down> <C-o>gj
   "inoremap <silent> <Up> <C-o>gk
-
 " Buffers navigation. <Leader> by default mapped to "\" character.
   nmap <Leader>[ :bp<CR>
   nmap <Leader>] :bn<CR>
