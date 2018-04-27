@@ -6,8 +6,8 @@ let $LANG = 'en_US'
 source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
 
-"set guifont=DejaVu\ Sans\ Mono\ 12
-set guifont=Pragmata\ Pro\ Mono:h20
+"set guifont=Pragmata\ Pro\ Mono:h20
+set guifont=Iosevka\ Term\ Slab:h20
 
 colorscheme evening
 set guioptions-=L " vertical-split left-hand scrollbar
