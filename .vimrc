@@ -167,7 +167,7 @@ set autoindent
 set ignorecase
 " Show as much as possible of a wrapped last line, not just "@".
 set display=lastline
-" Allow to switch between buffers without sawing them
+" Allow to switch between buffers without saving them
 set hidden
 " Close confirmation for unsaved buffers
 "set confirm
