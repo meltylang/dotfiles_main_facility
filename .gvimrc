@@ -9,8 +9,14 @@ source $VIMRUNTIME/menu.vim
 "set guifont=Pragmata\ Pro\ Mono:h20
 set guifont=Iosevka\ Term\ Slab:h20
 
-colorscheme evening
+if has("gui_running")
+  colorscheme evening
+  let g:airline_theme = 'term'
+endif
+
 set guioptions-=L " vertical-split left-hand scrollbar
 set guioptions-=r " right-hand scrollbar
-set guioptions+=mT " Menu and toolbar
+set guioptions-=T " toolbar
+"set guioptions+=mT " Menu and toolbar
+set guioptions+=m " Menu and toolbar
 set guioptions-=e " text tabline for buffers

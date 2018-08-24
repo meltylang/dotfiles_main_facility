@@ -102,10 +102,12 @@ if !($TERM == 'linux')
     set mouse=a
   endif
   " slate for root, elflord for user
-  if $USER == 'root'
-    colorscheme slate
-  else
-    colorscheme elflord
+  if !(has("gui_running"))
+    if $USER == 'root'
+      colorscheme slate
+    else
+      colorscheme elflord
+    endif
   endif
   " Faster settings for vim running under X
   "screen.xterm-256color
@@ -122,11 +124,15 @@ if !( $TERM == "linux" || $TERM == "screen.linux" ||
       \ $TERM == "tmux.linux" )
   " For tty text-only session
   set listchars=eol:↵,tab:\ \ ,trail:•,extends:»,precedes:«
-  let g:airline_theme = 'base16_grayscale'
+  if !(has("gui_running"))
+    let g:airline_theme = 'base16_grayscale'
+  endif
 else
   " if no tty-mode detected
-  set listchars=eol:¬,tab:\ \ ,trail:•,extends:»,precedes:«
-  let g:airline_theme = 'base16_grayscale'
+  if !(has("gui_running"))
+    set listchars=eol:¬,tab:\ \ ,trail:•,extends:»,precedes:«
+    let g:airline_theme = 'base16_grayscale'
+  endif
 endif
 
 " Edit crontabs in MacOS
