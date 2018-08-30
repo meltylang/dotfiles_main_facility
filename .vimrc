@@ -1,4 +1,5 @@
 " Vim configuration file
+
 " :so % — reload config file without restarting vim,
 " :so $MYVIMRC — another way; :so ~/.vimrc — on unix; :so ~/_vimrc — on
 " windows.
@@ -17,15 +18,18 @@ call vundle#begin()
   " Required for Vundle
   Plugin 'VundleVim/Vundle.vim'
   " Plugins:
-    Plugin 'scrooloose/nerdtree'
+  Plugin 'scrooloose/nerdtree'
+
   " vim-session begin
-    Plugin 'xolox/vim-misc'
-    Plugin 'xolox/vim-session'
-    " vim-session end
+  Plugin 'xolox/vim-misc'
+  Plugin 'xolox/vim-session'
+  " vim-session end
+
   " airline begin
-    Plugin 'vim-airline/vim-airline'
-    Plugin 'vim-airline/vim-airline-themes'
-    " airline end
+  Plugin 'vim-airline/vim-airline'
+  Plugin 'vim-airline/vim-airline-themes'
+  " airline end
+
   Plugin 'henrik/vim-indexed-search'
   Plugin 'Yggdroot/indentLine'            " indentatin guides
   Plugin 'jlanzarotta/bufexplorer'
@@ -33,10 +37,11 @@ call vundle#begin()
   Plugin 'scrooloose/nerdcommenter'
   Plugin 'majutsushi/tagbar'
   Plugin 'vim-syntastic/syntastic'
+
   " Ruby and Rails support begin
-    Plugin 'vim-ruby/vim-ruby'
-    Plugin 'tpope/vim-rails'
-    " Ruby and Rails support end
+  Plugin 'vim-ruby/vim-ruby'
+  Plugin 'tpope/vim-rails'
+  " Ruby and Rails support end
 """
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -135,19 +140,22 @@ else
   endif
 endif
 
-" Edit crontabs in MacOS
+" Edit crontab in MacOS
 " https://stackoverflow.com/questions/15395479/why-ive-got-no-crontab-entry-on-os-x-when-using-vim
 autocmd FileType crontab setlocal nowritebackup
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
+
 " Swap files options:
 " Turn swap files off:
 set noswapfile
+
 " or create them in dedicated directory:
 "set backupdir=~/.vim/backup//
 "set directory=~/.vim/swap//
 "set undodir=~/.vim/undo//
+
 " Show (partial) command in status line.
 "set showcmd
 " Show matching brackets.
@@ -160,6 +168,7 @@ set encoding=utf-8 fileencoding=utf-8 termencoding=utf-8
 set tabstop=2
 " Size of an indent
 set shiftwidth=2
+
 " A combination of spaces and tabs are used to simulate tab stops at a width
 " other than the (hard)tabstop
 set softtabstop=2
@@ -175,6 +184,7 @@ set ignorecase
 set display=lastline
 " Allow to switch between buffers without saving them
 set hidden
+
 " Close confirmation for unsaved buffers
 "set confirm
 " Speedup VIM
@@ -228,6 +238,7 @@ function! WinDo(command)
   execute currwin . 'wincmd w'
 endfunction
 com! -nargs=+ -complete=command Windo call WinDo(<q-args>)
+
 " Like bufdo but restore the current buffer.
 function! BufDo(command)
   let currBuff=bufnr("%")
@@ -235,6 +246,7 @@ function! BufDo(command)
   execute 'buffer ' . currBuff
 endfunction
 com! -nargs=+ -complete=command Bufdo call BufDo(<q-args>)
+
 " Like tabdo but restore the current tab.
 function! TabDo(command)
   let currTab=tabpagenr()
@@ -334,49 +346,61 @@ function! Remove_bom()
   w
 endfunction
 
+
 " KEYBOARD MAPPINGS
+
 " Plugins key mappings
-  map <C-n> :NERDTreeToggle<CR>
+map <C-n> :NERDTreeToggle<CR>
 " User functions key mappings
 " GUI-style copy-paste
-  let &t_SI .= "\<Esc>[?2004h"
-  let &t_EI .= "\<Esc>[?2004l"
-  inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
+let &t_SI .= "\<Esc>[?2004h"
+let &t_EI .= "\<Esc>[?2004l"
+inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
+
 " No-break indent paste mode toogle
-  set pastetoggle=<F2>
+set pastetoggle=<F2>
+
 " And keyboard remappings for vertical navigation
-  nnoremap j gj
-  nnoremap k gk
-  nnoremap <Down> gj
-  nnoremap <Up> gk
-  vnoremap j gj
-  vnoremap k gk
-  vnoremap <Down> gj
-  vnoremap <Up> gk
+nnoremap j gj
+nnoremap k gk
+nnoremap <Down> gj
+nnoremap <Up> gk
+vnoremap j gj
+vnoremap k gk
+vnoremap <Down> gj
+vnoremap <Up> gk
+
 " Disabled for the sake of better user experience,
 " and this is not always needed.
   "inoremap <silent> <Down> <C-o>gj
   "inoremap <silent> <Up> <C-o>gk
 " Buffers navigation. <Leader> by default mapped to "\" character.
-  nmap <Leader>[ :bp<CR>
-  nmap <Leader>] :bn<CR>
+nmap <Leader>[ :bp<CR>
+nmap <Leader>] :bn<CR>
+
 " Toogle syntax highlighting
-  nmap <silent>;s :call ToggleSyntax()<CR>
+nmap <silent>;s :call ToggleSyntax()<CR>
 " Clear trailing whitespace
-  nnoremap <silent>;w :call TrimWhiteSpace()<CR>
+nnoremap <silent>;w :call TrimWhiteSpace()<CR>
 " Search highlight toogle
-  nnoremap <silent><F3> :call HLS_toggle()<CR>
+nnoremap <silent><F3> :call HLS_toggle()<CR>
+
 map <F4> :call ToggleList()<CR>
 map <F5> :call NumberToggle()<CR>
 map <F6> :call ColonGuideToggle()<CR>
+
 " Indicate current line with different color
-  map <F7> :call ToggleCline()<CR>
+map <F7> :call ToggleCline()<CR>
+
 nnoremap <silent><F8> :IndentLinesToggle<CR>
 " Tagbar plugin shortcut
-  nnoremap <silent> <F9> :TagbarToggle<CR>
+nnoremap <silent> <F9> :TagbarToggle<CR>
 " delete without yanking
-  nnoremap <leader>d "_d
-  vnoremap <leader>d "_d
+nnoremap <leader>d "_d
+vnoremap <leader>d "_d
+
 " replace currently selected text with default register
 " without yanking it
-  vnoremap <leader>p "_dP
+vnoremap <leader>p "_dP
+
+  " vimrc end
