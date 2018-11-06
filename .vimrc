@@ -17,8 +17,10 @@ call vundle#begin()
 """
   " Required for Vundle
   Plugin 'VundleVim/Vundle.vim'
+
   " Plugins:
   Plugin 'scrooloose/nerdtree'
+  Plugin 'ctrlpvim/ctrlp.vim'
 
   " vim-session begin
   Plugin 'xolox/vim-misc'
@@ -37,6 +39,7 @@ call vundle#begin()
   Plugin 'scrooloose/nerdcommenter'
   Plugin 'majutsushi/tagbar'
   Plugin 'vim-syntastic/syntastic'
+  Plugin 'tpope/vim-unimpaired'
 
   " Ruby and Rails support begin
   Plugin 'vim-ruby/vim-ruby'
