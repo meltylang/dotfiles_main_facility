@@ -223,7 +223,8 @@ endfunction
 function! FoldLongLines()
   " Implement detection of was text area specified or not
   " Be careful with non-latin character sets
-  %!fold -s -w 80
+  "%!fold -s -w 80
+  '<,'>!fold -s -w 80
 endfunction
 
 function! XTermPasteBegin()
@@ -385,6 +386,7 @@ nmap <Leader>] :bn<CR>
 nmap <silent>;s :call ToggleSyntax()<CR>
 " Clear trailing whitespace
 nnoremap <silent>;w :call TrimWhiteSpace()<CR>
+vnoremap <silent>;f :call FoldLongLines()<CR>
 " Search highlight toogle
 nnoremap <silent><F3> :call HLS_toggle()<CR>
 
