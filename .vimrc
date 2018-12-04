@@ -40,6 +40,8 @@ call vundle#begin()
   Plugin 'majutsushi/tagbar'
   Plugin 'vim-syntastic/syntastic'
   Plugin 'tpope/vim-unimpaired'
+  Plugin 'tpope/vim-endwise'              " end tags
+  Plugin 'cohama/lexima.vim'              " auto close pairs: (), quotes
 
   " Ruby and Rails support begin
   Plugin 'vim-ruby/vim-ruby'
