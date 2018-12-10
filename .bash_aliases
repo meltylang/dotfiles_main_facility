@@ -10,3 +10,5 @@ RVM_SWP_CMD+="echo \"Turning ON rvm for user\"; rvm default"
 if [ "$_system_name" != "OSX" ]; then
   alias su=${RVM_SWP_CMD}
 fi
+
+alias git-ls-tree="git ls-tree -r HEAD"
