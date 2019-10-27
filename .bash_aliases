@@ -12,3 +12,5 @@ if [ "$_system_name" != "OSX" ]; then
 fi
 
 alias git-ls-tree="git ls-tree -r HEAD"
+alias youtube-dl-720="youtube-dl -f 'bestvideo[height<=720][ext=mp4]+bestaudio[ext=m4a]'"
+alias youtube-dl-1080="youtube-dl -f 'bestvideo[height<=1080][ext=mp4]+bestaudio[ext=m4a]'"
